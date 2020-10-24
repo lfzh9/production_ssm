@@ -9,5 +9,6 @@ public class Constants {
 
     public static final String NO_PERMISSION = "no permission : ";
 
+    
     public static final String ERROR_HAPPENS = "error happens : ";
 }
