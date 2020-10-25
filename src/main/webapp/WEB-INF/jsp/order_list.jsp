@@ -464,7 +464,6 @@ function doSearch_order(value,name){ //用户输入用户名,点击搜素,触发
        			$.messager.alert('提示', data.msg);
        		}else{
        			var ids = getOrderSelectionsIds();
-               	
                	if(ids.length == 0){
                		$.messager.alert('提示','必须选择一个订单才能编辑!');
                		return ;
@@ -478,6 +477,7 @@ function doSearch_order(value,name){ //用户输入用户名,点击搜素,触发
                		onLoad :function(){
                			//回显数据
                			var data = $("#orderList").datagrid("getSelections")[0];
+               			alert(data);
                			data.customId = data.custom.customId; 
                			data.productId = data.product.productId; 
                			data.orderDate = TAOTAO.formatDateTime(data.orderDate);

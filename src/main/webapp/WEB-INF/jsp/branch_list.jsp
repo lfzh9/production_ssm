@@ -107,7 +107,7 @@ function doSearch_branch(value,name){ //用户输入用户名,点击搜素,触�
     	var sels = branchList.datagrid("getSelections");
     	var ids = [];
     	for(var i in sels){
-    		ids.push(sels[i].branchId);
+    		ids.push(sels[i].id);
     	}
     	ids = ids.join(","); 
     	
@@ -130,7 +130,6 @@ function doSearch_branch(value,name){ //用户输入用户名,点击搜素,触�
        			$.messager.alert('提示', data.msg);
        		}else{
        			var ids = getbranchSelectionsIds();
-               	
                	if(ids.length == 0){
                		$.messager.alert('提示','必须选择一个机构才能编辑!');
                		return ;
@@ -144,21 +143,8 @@ function doSearch_branch(value,name){ //用户输入用户名,点击搜素,触�
                		onLoad :function(){
                			//回显数据
                			var data = $("#branchList").datagrid("getSelections")[0];
-               			data.customId = data.custom.customId; 
-               			data.productId = data.product.productId; 
-               			data.branchDate = TAOTAO.formatDateTime(data.branchDate);
-               			data.requestDate = TAOTAO.formatDateTime(data.requestDate);
-               			$("#branchEditForm").form("load", data);
-               			branchEditEditor.html(data.note);
                			
-               			TAOTAO.init({
-               				"pics" : data.image,
-               			});
-               			
-               			//加载文件上传插件
-               			initbranchEditFileUpload();
-               			//加载上传过的文件
-               			initUploadedFile();
+               			$("#branchEditWindow").form("load", data);
                		}
                	}).window("open");
        		}
@@ -171,6 +157,7 @@ function doSearch_branch(value,name){ //用户输入用户名,点击搜素,触�
       			$.messager.alert('提示', data.msg);
       		}else{
       			var ids = getbranchSelectionsIds();
+      			alert(ids);
               	if(ids.length == 0){
               		$.messager.alert('提示','未选中机构!');
               		return ;

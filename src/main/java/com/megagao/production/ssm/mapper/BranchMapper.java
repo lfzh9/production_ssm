@@ -9,5 +9,10 @@ public interface BranchMapper {
 	public List<Branch> searchBranchById(String id);
 	public List<Branch> searchBranchByName(String name);
 	public List<Branch> searchBranchByShortName(String short_name);
+	public int insert(Branch branch)throws Exception;
+	public int update(Branch branch);
+	public int deleteByPrimaryKey(String id);
+	public int deleteBatch(String[] ids);
+
 	
 }

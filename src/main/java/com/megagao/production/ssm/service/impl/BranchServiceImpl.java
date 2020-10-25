@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.megagao.production.ssm.domain.Branch;
+import com.megagao.production.ssm.domain.customize.CustomResult;
 import com.megagao.production.ssm.domain.customize.EUDataGridResult;
 import com.megagao.production.ssm.mapper.BranchMapper;
 import com.megagao.production.ssm.service.BranchService;
@@ -52,6 +53,7 @@ public class BranchServiceImpl implements BranchService {
 		result.setTotal(pageInfo.getTotal());
 		return result;
 	}
+
 	@Override
 	public EUDataGridResult searchBranchByName(Integer page, Integer rows,
 			String searchValue) throws Exception {
@@ -66,6 +68,7 @@ public class BranchServiceImpl implements BranchService {
 		result.setTotal(pageInfo.getTotal());
 		return result;
 	}
+
 	@Override
 	public EUDataGridResult searchBranchByShortName(Integer page, Integer rows,
 			String searchValue) throws Exception {
@@ -79,6 +82,52 @@ public class BranchServiceImpl implements BranchService {
 		PageInfo<Branch> pageInfo = new PageInfo<Branch>(list);
 		result.setTotal(pageInfo.getTotal());
 		return result;
+	}
+
+	@Override
+	public CustomResult insert(Branch branch) throws Exception {
+		int i = branchMapper.insert(branch);
+		if (i > 0) {
+			return CustomResult.ok();
+		} else {
+			return CustomResult.build(101, "新增机构失败");
+		}
+	}
+
+	@Override
+	public List<Branch> get(String id) throws Exception {
+		// TODO Auto-generated method stub
+		return branchMapper.searchBranchById(id);
+	}
+
+	@Override
+	public CustomResult updateAll(Branch branch) {
+		int i = branchMapper.update(branch);
+		if(i>0){
+			return CustomResult.ok();
+		}else{
+			return CustomResult.build(101, "修改订单失败");
+		}
+	}
+
+	@Override
+	public CustomResult delete(String id) {
+		int i = branchMapper.deleteByPrimaryKey(id);
+		if(i>0){
+			return CustomResult.ok();
+		}else{
+			return null;
+		}
+	}
+
+	@Override
+	public CustomResult deleteBatch(String[] ids) {
+		int i = branchMapper.deleteBatch(ids);
+		if(i>0){
+			return CustomResult.ok();
+		}else{
+			return null;
+		}
 	}
 
 }

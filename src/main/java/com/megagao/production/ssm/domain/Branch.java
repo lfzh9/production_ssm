@@ -1,7 +1,12 @@
 package com.megagao.production.ssm.domain;
 
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+
 public class Branch {
+	@Size(min=3,max=12,message="{id.length.error}")
 	private String id;
+	@NotNull(message="机构名不能为空")
 	private String name;
 	private String short_name;
 	

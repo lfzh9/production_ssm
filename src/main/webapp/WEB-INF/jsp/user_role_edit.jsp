@@ -118,6 +118,11 @@
 		<label><input name="permissionOption3" type="checkbox" value="272" />设备种类修改 </label> 
 		<label><input name="permissionOption3" type="checkbox" value="273" />设备种类删除 </label> 
 		<br><br>
+		<span style="font-weight: bold;">机构管理：</span>
+		<label><input name="permissionOption3" type="checkbox" value="275" />机构新增 </label> 
+		<label><input name="permissionOption3" type="checkbox" value="276" />机构修改 </label> 
+		<label><input name="permissionOption3" type="checkbox" value="277" />机构删除 </label> 
+		<br><br>
 		<span style="font-weight: bold;">设备例检管理：</span>
 		<label><input name="permissionOption3" type="checkbox" value="241" />设备例检新增 </label> 
 		<label><input name="permissionOption3" type="checkbox" value="242" />设备例检修改 </label> 

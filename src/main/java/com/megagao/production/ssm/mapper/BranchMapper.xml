@@ -14,6 +14,27 @@
 <select id="searchBranchByShortName" resultType="Branch" parameterType="string">
 	select * from branch where short_name like CONCAT('%',#{short_name},'%' ) 
 </select>
+<insert id="insert" parameterType="Branch">
+	insert into branch (id,name,short_name)
+    values (#{id,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, #{short_name,jdbcType=VARCHAR})
+</insert>
+<update id="update" parameterType="Branch">
+	update branch set name=#{name},short_name=#{short_name} where id = #{id}
+</update>
 
+<delete id="deleteByPrimaryKey">
+	delete from branch where id=#{id}
+</delete>
 
+<!-- 批量删除 -->
+	<delete id="deleteBatch">
+		DELETE
+		FROM
+			branch
+		WHERE
+			id IN
+		<foreach collection="array" item="id" open="(" close=")" separator=",">
+			#{id}
+		</foreach>
+	</delete>
 </mapper>
