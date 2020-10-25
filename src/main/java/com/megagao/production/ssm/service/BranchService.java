@@ -24,7 +24,7 @@ public interface BranchService {
 
 	CustomResult insert(Branch branch)throws Exception;
 
-	List<Branch> get(String id)throws Exception;
+	Branch get(String id)throws Exception;
 
 	CustomResult updateAll(Branch branch);
 

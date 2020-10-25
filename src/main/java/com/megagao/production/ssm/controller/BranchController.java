@@ -42,14 +42,16 @@ public class BranchController {
 	@ResponseBody
 	private CustomResult insert(@Valid Branch branch, BindingResult bindingResult) throws Exception {
 		CustomResult result;
+		System.out.println(branch.getId());
 		if(bindingResult.hasErrors()){
 			FieldError fieldError = bindingResult.getFieldError();
 			System.out.println(fieldError.getDefaultMessage());
 			return CustomResult.build(100, fieldError.getDefaultMessage());
 		}
 		if(branchService.get(branch.getId()) != null){
-			result = new CustomResult(0, "该订单编号已经存在，请更换订单编号！", null);
+			result = new CustomResult(0, "该机构编号已经存在，请更换机构编号！", null);
 		}else{
+			
 			result = branchService.insert(branch);
 		}
 		return result;

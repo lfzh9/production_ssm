@@ -13,6 +13,7 @@ public interface BranchMapper {
 	public int update(Branch branch);
 	public int deleteByPrimaryKey(String id);
 	public int deleteBatch(String[] ids);
+	public Branch loadBranchById(String id);
 
 	
 }

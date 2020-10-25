@@ -49,10 +49,10 @@
 			return ;
 		}
 		
-		
 		//ajax的post方式提交表单
 		//$("#branchAddForm").serialize()将表单序列号为key-value形式的字符串
 		$.post("branch/insert",$("#branchAddForm").serialize(), function(data){
+			
 			if(data.status == 200){
 				$.messager.alert('提示','新增订单成功!');
 				clearBranchADDForm();
@@ -60,6 +60,8 @@
 				$("#branchList").datagrid("reload");
 			}else{
 				$.messager.alert('提示',data.msg);
+				alert(data.status);
+				
 			}
 		});
 	}

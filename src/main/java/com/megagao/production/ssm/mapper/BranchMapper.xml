@@ -5,6 +5,9 @@
 <select id="find" resultType="Branch">
 	select * from branch
 </select>
+<select id="loadBranchById" resultType="Branch" parameterType="string">
+	select * from branch where id = #{id}
+</select>
 <select id="searchBranchById" resultType="Branch" parameterType="string">
 	select * from branch where id like CONCAT('%',#{id},'%' ) 
 </select>
