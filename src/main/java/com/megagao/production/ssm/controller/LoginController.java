@@ -1,6 +1,7 @@
 package com.megagao.production.ssm.controller;
 
 import com.megagao.production.ssm.util.CollectionsFactory;
+
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.AuthenticationException;
 import org.apache.shiro.authc.IncorrectCredentialsException;
@@ -12,7 +13,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+
 import java.util.Map;
 
 import static com.megagao.production.ssm.common.Constants.VALIDATE_CODE;
@@ -33,7 +36,7 @@ public class LoginController {
 	public Map<String,Object> ajaxLogin(@RequestParam String username,
 													  @RequestParam String password,
 													  @RequestParam(required=false) String randomcode,
-													  HttpSession session) throws Exception{
+													  HttpSession session,HttpServletRequest request) throws Exception{
 	    
 		Map<String,Object> map = CollectionsFactory.newHashMap();
 		
@@ -53,6 +56,11 @@ public class LoginController {
 	    	UsernamePasswordToken token = new UsernamePasswordToken(username, password);
 	        try{
 	            currentUser.login(token);
+	            
+	            //数据库添加登录日志
+	            
+	            map.put("msg", "dfsa");
+	            
 	        }catch(UnknownAccountException ex){
 	        	map.put("msg", "account_error");
 	        }catch(IncorrectCredentialsException ex){

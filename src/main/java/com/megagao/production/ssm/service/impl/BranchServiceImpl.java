@@ -97,6 +97,8 @@ public class BranchServiceImpl implements BranchService {
 	@Override
 	public Branch get(String id) throws Exception {
 		// TODO Auto-generated method stub
+//		return branchMapper.searchBranchById(id);
+//		System.out.println(branchMapper.searchBranchById(id)==null),false;
 		return branchMapper.loadBranchById(id);
 	}
 

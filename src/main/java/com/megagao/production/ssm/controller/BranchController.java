@@ -42,7 +42,7 @@ public class BranchController {
 	@ResponseBody
 	private CustomResult insert(@Valid Branch branch, BindingResult bindingResult) throws Exception {
 		CustomResult result;
-		System.out.println(branch.getId());
+//		System.out.println(branch.getId());
 		if(bindingResult.hasErrors()){
 			FieldError fieldError = bindingResult.getFieldError();
 			System.out.println(fieldError.getDefaultMessage());
