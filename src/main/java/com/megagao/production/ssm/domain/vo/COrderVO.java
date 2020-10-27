@@ -1,10 +1,10 @@
 package com.megagao.production.ssm.domain.vo;
 
-import com.megagao.production.ssm.domain.Custom;
-import com.megagao.production.ssm.domain.Product;
-
 import java.math.BigDecimal;
 import java.util.Date;
+
+import com.megagao.production.ssm.domain.Custom;
+import com.megagao.production.ssm.domain.Product;
 
 public class COrderVO {
     private String orderId;

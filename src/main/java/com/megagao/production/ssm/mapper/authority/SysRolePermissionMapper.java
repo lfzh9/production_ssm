@@ -2,9 +2,10 @@ package com.megagao.production.ssm.mapper.authority;
 
 import java.util.List;
 
-import com.megagao.production.ssm.domain.authority.SysRolePermissionExample;
 import org.apache.ibatis.annotations.Param;
+
 import com.megagao.production.ssm.domain.authority.SysRolePermission;
+import com.megagao.production.ssm.domain.authority.SysRolePermissionExample;
 
 public interface SysRolePermissionMapper {
 	int updateRolePermission(SysRolePermission sysRolePermission);

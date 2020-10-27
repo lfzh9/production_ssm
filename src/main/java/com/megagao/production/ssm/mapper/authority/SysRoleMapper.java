@@ -3,9 +3,10 @@ package com.megagao.production.ssm.mapper.authority;
 import java.util.List;
 
 import org.apache.ibatis.annotations.Param;
-import com.megagao.production.ssm.domain.vo.RoleVO;
-import com.megagao.production.ssm.domain.authority.SysRoleExample;
+
 import com.megagao.production.ssm.domain.authority.SysRole;
+import com.megagao.production.ssm.domain.authority.SysRoleExample;
+import com.megagao.production.ssm.domain.vo.RoleVO;
 
 public interface SysRoleMapper {
 	

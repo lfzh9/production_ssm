@@ -2,10 +2,11 @@ package com.megagao.production.ssm.mapper;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Param;
+
 import com.megagao.production.ssm.domain.TechnologyRequirement;
 import com.megagao.production.ssm.domain.TechnologyRequirementExample;
 import com.megagao.production.ssm.domain.vo.TechnologyRequirementVO;
-import org.apache.ibatis.annotations.Param;
 
 public interface TechnologyRequirementMapper {
 	

@@ -4,7 +4,6 @@ import java.util.List;
 
 import com.megagao.production.ssm.domain.authority.SysPermission;
 import com.megagao.production.ssm.domain.authority.SysUser;
-import com.megagao.production.ssm.domain.customize.ActiveUser;
 
 /**
  * created on 2016年9月6日 

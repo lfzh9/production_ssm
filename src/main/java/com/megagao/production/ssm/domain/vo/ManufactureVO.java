@@ -1,9 +1,9 @@
 package com.megagao.production.ssm.domain.vo;
 
+import java.util.Date;
+
 import com.megagao.production.ssm.domain.COrder;
 import com.megagao.production.ssm.domain.Technology;
-
-import java.util.Date;
 
 
 public class ManufactureVO {

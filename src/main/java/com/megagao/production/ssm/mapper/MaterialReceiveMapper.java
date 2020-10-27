@@ -2,10 +2,11 @@ package com.megagao.production.ssm.mapper;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Param;
+
 import com.megagao.production.ssm.domain.MaterialReceive;
 import com.megagao.production.ssm.domain.MaterialReceiveExample;
 import com.megagao.production.ssm.domain.vo.MaterialReceiveVO;
-import org.apache.ibatis.annotations.Param;
 
 public interface MaterialReceiveMapper {
     

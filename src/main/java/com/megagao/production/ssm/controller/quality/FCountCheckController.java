@@ -6,10 +6,6 @@ import java.util.Date;
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
-import com.megagao.production.ssm.domain.FinalCountCheck;
-import com.megagao.production.ssm.domain.customize.CustomResult;
-import com.megagao.production.ssm.domain.customize.EUDataGridResult;
-import com.megagao.production.ssm.service.FCountCheckService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.stereotype.Controller;
@@ -21,6 +17,11 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+
+import com.megagao.production.ssm.domain.FinalCountCheck;
+import com.megagao.production.ssm.domain.customize.CustomResult;
+import com.megagao.production.ssm.domain.customize.EUDataGridResult;
+import com.megagao.production.ssm.service.FCountCheckService;
 
 @Controller
 @RequestMapping("/f_count_check")

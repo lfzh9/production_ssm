@@ -1,7 +1,7 @@
 package com.megagao.production.ssm.service;
 
-import com.megagao.production.ssm.domain.customize.CustomResult;
 import com.megagao.production.ssm.domain.ProcessCountCheck;
+import com.megagao.production.ssm.domain.customize.CustomResult;
 import com.megagao.production.ssm.domain.customize.EUDataGridResult;
 
 public interface PCountCheckService {

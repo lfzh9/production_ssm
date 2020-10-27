@@ -1,8 +1,8 @@
 package com.megagao.production.ssm.domain.vo;
 
-import com.megagao.production.ssm.domain.Material;
-
 import java.util.Date;
+
+import com.megagao.production.ssm.domain.Material;
 
 public class MaterialReceiveVO {
 	

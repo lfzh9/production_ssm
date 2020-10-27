@@ -2,10 +2,10 @@ package com.megagao.production.ssm.service;
 
 import java.util.List;
 
-import com.megagao.production.ssm.domain.customize.CustomResult;
-import com.megagao.production.ssm.domain.vo.RoleVO;
-import com.megagao.production.ssm.domain.customize.EUDataGridResult;
 import com.megagao.production.ssm.domain.authority.SysRole;
+import com.megagao.production.ssm.domain.customize.CustomResult;
+import com.megagao.production.ssm.domain.customize.EUDataGridResult;
+import com.megagao.production.ssm.domain.vo.RoleVO;
 
 public interface RoleService {
 	

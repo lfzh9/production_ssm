@@ -3,12 +3,6 @@ package com.megagao.production.ssm.shiro;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.megagao.production.ssm.domain.authority.SysPermission;
-import com.megagao.production.ssm.domain.authority.SysUser;
-import com.megagao.production.ssm.domain.customize.ActiveUser;
-import com.megagao.production.ssm.domain.vo.RoleVO;
-import com.megagao.production.ssm.service.RoleService;
-import com.megagao.production.ssm.service.SysService;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.AuthenticationException;
 import org.apache.shiro.authc.AuthenticationInfo;
@@ -21,6 +15,13 @@ import org.apache.shiro.subject.PrincipalCollection;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+
+import com.megagao.production.ssm.domain.authority.SysPermission;
+import com.megagao.production.ssm.domain.authority.SysUser;
+import com.megagao.production.ssm.domain.customize.ActiveUser;
+import com.megagao.production.ssm.domain.vo.RoleVO;
+import com.megagao.production.ssm.service.RoleService;
+import com.megagao.production.ssm.service.SysService;
 
 
 /**

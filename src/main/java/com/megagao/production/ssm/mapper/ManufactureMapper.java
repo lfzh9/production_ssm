@@ -3,9 +3,10 @@ package com.megagao.production.ssm.mapper;
 import java.util.List;
 
 import org.apache.ibatis.annotations.Param;
-import com.megagao.production.ssm.domain.vo.ManufactureVO;
-import com.megagao.production.ssm.domain.ManufactureExample;
+
 import com.megagao.production.ssm.domain.Manufacture;
+import com.megagao.production.ssm.domain.ManufactureExample;
+import com.megagao.production.ssm.domain.vo.ManufactureVO;
 
 public interface ManufactureMapper {
 	

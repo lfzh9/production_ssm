@@ -2,10 +2,10 @@ package com.megagao.production.ssm.service;
 
 import java.util.List;
 
-import com.megagao.production.ssm.domain.customize.CustomResult;
-import com.megagao.production.ssm.domain.vo.WorkVO;
-import com.megagao.production.ssm.domain.customize.EUDataGridResult;
 import com.megagao.production.ssm.domain.Work;
+import com.megagao.production.ssm.domain.customize.CustomResult;
+import com.megagao.production.ssm.domain.customize.EUDataGridResult;
+import com.megagao.production.ssm.domain.vo.WorkVO;
 
 public interface WorkService {
 	

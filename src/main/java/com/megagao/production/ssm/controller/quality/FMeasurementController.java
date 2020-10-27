@@ -3,10 +3,6 @@ package com.megagao.production.ssm.controller.quality;
 
 import javax.validation.Valid;
 
-import com.megagao.production.ssm.domain.customize.CustomResult;
-import com.megagao.production.ssm.service.MeasureService;
-import com.megagao.production.ssm.domain.FinalMeasuretCheck;
-import com.megagao.production.ssm.domain.customize.EUDataGridResult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
@@ -15,6 +11,11 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+
+import com.megagao.production.ssm.domain.FinalMeasuretCheck;
+import com.megagao.production.ssm.domain.customize.CustomResult;
+import com.megagao.production.ssm.domain.customize.EUDataGridResult;
+import com.megagao.production.ssm.service.MeasureService;
 
 @Controller
 @RequestMapping("/measure")

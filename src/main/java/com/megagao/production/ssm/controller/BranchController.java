@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.megagao.production.ssm.domain.Branch;
-import com.megagao.production.ssm.domain.COrder;
 import com.megagao.production.ssm.domain.customize.CustomResult;
 import com.megagao.production.ssm.domain.customize.EUDataGridResult;
 import com.megagao.production.ssm.service.BranchService;

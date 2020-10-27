@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="com.megagao.production.ssm.mapper.OperationLogMapper">
+<select id="find" resultType="OperationLog">
+	select * from operationLog
+</select>
+<select id="searchOperationLogById" resultType="OperationLog" parameterType="int">
+	select * from operationLog where id like CONCAT('%',#{id},'%' ) 
+</select>
+<select id="searchOperationLogByDate" resultType="OperationLog" parameterType="String">
+	select * from operationlog where date like CONCAT('%',#{date},'%' )
+</select>
+<select id="searchOperationLogByName" resultType="OperationLog" parameterType="string">
+	select * from operationLog where name like CONCAT('%',#{name},'%' ) 
+</select>
+<insert id="insert" parameterType="OperationLog">
+	insert into operationLog (date,desc,name)
+    values (#{date,jdbcType=VARCHAR},#{desc,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR})
+</insert>
+
+
+<delete id="deleteByPrimaryKey" >
+	delete from operationLog where id=#{id}
+</delete>
+
+<!-- 批量删除 -->
+	<delete id="deleteBatch">
+		DELETE
+		FROM
+			operationLog
+		WHERE
+			id IN
+		<foreach collection="array" item="id" open="(" close=")" separator=",">
+			#{id}
+		</foreach>
+	</delete>
+</mapper>

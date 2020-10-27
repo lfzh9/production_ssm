@@ -3,8 +3,9 @@ package com.megagao.production.ssm.mapper.authority;
 import java.util.List;
 
 import org.apache.ibatis.annotations.Param;
-import com.megagao.production.ssm.domain.authority.SysUserExample;
+
 import com.megagao.production.ssm.domain.authority.SysUser;
+import com.megagao.production.ssm.domain.authority.SysUserExample;
 
 public interface SysUserMapper {
 	//扩展的mapper接口方法

@@ -2,10 +2,11 @@ package com.megagao.production.ssm.mapper;
 
 import java.util.List;
 
-import com.megagao.production.ssm.domain.vo.MaterialConsumeVO;
 import org.apache.ibatis.annotations.Param;
-import com.megagao.production.ssm.domain.MaterialConsumeExample;
+
 import com.megagao.production.ssm.domain.MaterialConsume;
+import com.megagao.production.ssm.domain.MaterialConsumeExample;
+import com.megagao.production.ssm.domain.vo.MaterialConsumeVO;
 
 public interface MaterialConsumeMapper {
 	

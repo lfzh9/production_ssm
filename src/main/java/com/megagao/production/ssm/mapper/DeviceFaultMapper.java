@@ -2,8 +2,9 @@ package com.megagao.production.ssm.mapper;
 
 import java.util.List;
 
-import com.megagao.production.ssm.domain.DeviceFault;
 import org.apache.ibatis.annotations.Param;
+
+import com.megagao.production.ssm.domain.DeviceFault;
 import com.megagao.production.ssm.domain.DeviceFaultExample;
 import com.megagao.production.ssm.domain.vo.DeviceFaultVO;
 

@@ -2,9 +2,10 @@ package com.megagao.production.ssm.mapper;
 
 import java.util.List;
 
-import com.megagao.production.ssm.domain.DeviceTypeExample;
 import org.apache.ibatis.annotations.Param;
+
 import com.megagao.production.ssm.domain.DeviceType;
+import com.megagao.production.ssm.domain.DeviceTypeExample;
 
 public interface DeviceTypeMapper {
 	//扩展的mapper接口方法

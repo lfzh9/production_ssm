@@ -2,9 +2,10 @@ package com.megagao.production.ssm.mapper;
 
 import java.util.List;
 
-import com.megagao.production.ssm.domain.DepartmentExample;
 import org.apache.ibatis.annotations.Param;
+
 import com.megagao.production.ssm.domain.Department;
+import com.megagao.production.ssm.domain.DepartmentExample;
 
 public interface DepartmentMapper {
 	

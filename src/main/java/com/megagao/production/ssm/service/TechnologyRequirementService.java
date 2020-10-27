@@ -2,9 +2,9 @@ package com.megagao.production.ssm.service;
 
 import java.util.List;
 
-import com.megagao.production.ssm.domain.customize.CustomResult;
 import com.megagao.production.ssm.domain.Technology;
 import com.megagao.production.ssm.domain.TechnologyRequirement;
+import com.megagao.production.ssm.domain.customize.CustomResult;
 import com.megagao.production.ssm.domain.customize.EUDataGridResult;
 
 public interface TechnologyRequirementService {

@@ -1,6 +1,12 @@
 package com.megagao.production.ssm.controller;
 
-import com.megagao.production.ssm.util.CollectionsFactory;
+import static com.megagao.production.ssm.common.Constants.VALIDATE_CODE;
+
+import java.util.Date;
+import java.util.Map;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.AuthenticationException;
@@ -8,17 +14,17 @@ import org.apache.shiro.authc.IncorrectCredentialsException;
 import org.apache.shiro.authc.UnknownAccountException;
 import org.apache.shiro.authc.UsernamePasswordToken;
 import org.apache.shiro.subject.Subject;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
-
-import java.util.Map;
-
-import static com.megagao.production.ssm.common.Constants.VALIDATE_CODE;
+import com.megagao.production.ssm.domain.LoginLog;
+import com.megagao.production.ssm.domain.customize.CustomResult;
+import com.megagao.production.ssm.domain.customize.EUDataGridResult;
+import com.megagao.production.ssm.service.LoginLogService;
+import com.megagao.production.ssm.util.CollectionsFactory;
 
 /**
   * created on 2016年9月6日 
@@ -27,6 +33,70 @@ import static com.megagao.production.ssm.common.Constants.VALIDATE_CODE;
   */
 @Controller
 public class LoginController {
+	@Autowired
+	private LoginLogService loginLogService;
+	
+	@RequestMapping("/loginLog/find")
+	public String find() throws Exception{
+		return "loginLog_list";                                                                                                                                                                                                                                                                                                 
+	}
+	
+	@RequestMapping("/loginLog/list")
+	@ResponseBody
+	public EUDataGridResult getList(Integer page, Integer rows) throws Exception{
+		EUDataGridResult result = loginLogService.getList(page, rows);
+		return result;
+	}
+	
+	
+	
+	
+	@RequestMapping(value="/loginLog/delete")
+	@ResponseBody
+	private CustomResult delete(int id) throws Exception {
+		CustomResult result = loginLogService.delete(id);
+		return result;
+	}
+	
+	@RequestMapping(value="/loginLog/delete_batch")
+	@ResponseBody
+	private CustomResult deleteBatch(int[] ids) throws Exception {
+		CustomResult result = loginLogService.deleteBatch(ids);
+		return result;
+	}
+	
+	
+	
+	//根据订单id查找
+	@RequestMapping("/loginLog/search_loginLog_by_id")
+	@ResponseBody
+	public EUDataGridResult searchLoginLogById(Integer page, Integer rows, int searchValue) throws Exception{
+		EUDataGridResult result = loginLogService.searchLoginLogById(page, rows, searchValue);
+		return result;
+	}
+	//根据订单id查找
+	@RequestMapping("/loginLog/search_loginLog_by_date")
+	@ResponseBody
+	public EUDataGridResult searchLoginLogByDate(Integer page, Integer rows, String searchValue) throws Exception{
+		EUDataGridResult result = loginLogService.searchLoginLogByDate(page, rows, searchValue);
+		return result;
+	}
+	//根据订单id查找
+	@RequestMapping("/loginLog/search_loginLog_by_name")
+	@ResponseBody
+	public EUDataGridResult searchLoginLogByName(Integer page, Integer rows, String searchValue) throws Exception{
+		searchValue = new String(searchValue.getBytes("iso8859-1"),"utf-8"); 
+		EUDataGridResult result = loginLogService.searchLoginLogByName(page, rows, searchValue);
+		return result;
+	}
+	
+	
+	
+	
+	
+	
+	
+	
 
 	/**
 	 * shiro ajax登录 
@@ -58,8 +128,11 @@ public class LoginController {
 	            currentUser.login(token);
 	            
 	            //数据库添加登录日志
-	            
-	            map.put("msg", "dfsa");
+	            LoginLog loginLog = new LoginLog();
+	            loginLog.setDate(new Date());
+	            loginLog.setIp(request.getRemoteAddr());
+	            loginLog.setName(username);
+	            loginLogService.insert(loginLog);
 	            
 	        }catch(UnknownAccountException ex){
 	        	map.put("msg", "account_error");

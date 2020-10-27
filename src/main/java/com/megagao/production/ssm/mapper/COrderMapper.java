@@ -2,9 +2,10 @@ package com.megagao.production.ssm.mapper;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Param;
+
 import com.megagao.production.ssm.domain.COrder;
 import com.megagao.production.ssm.domain.COrderExample;
-import org.apache.ibatis.annotations.Param;
 import com.megagao.production.ssm.domain.vo.COrderVO;
 
 public interface COrderMapper {

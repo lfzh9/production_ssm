@@ -2,9 +2,10 @@ package com.megagao.production.ssm.mapper.authority;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Param;
+
 import com.megagao.production.ssm.domain.authority.SysPermission;
 import com.megagao.production.ssm.domain.authority.SysPermissionExample;
-import org.apache.ibatis.annotations.Param;
 
 public interface SysPermissionMapper {
 	

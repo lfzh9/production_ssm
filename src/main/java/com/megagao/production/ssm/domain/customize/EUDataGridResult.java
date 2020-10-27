@@ -18,5 +18,9 @@ public class EUDataGridResult {
 	public void setRows(List<?> rows) {
 		this.rows = rows;
 	}
+	@Override
+	public String toString() {
+		return "EUDataGridResult [total=" + total + ", rows=" + rows + "]";
+	}
 	
 }

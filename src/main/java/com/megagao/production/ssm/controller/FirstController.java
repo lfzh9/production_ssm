@@ -1,9 +1,12 @@
 package com.megagao.production.ssm.controller;
 
-import com.megagao.production.ssm.domain.authority.SysPermission;
-import com.megagao.production.ssm.domain.customize.ActiveUser;
-import com.megagao.production.ssm.service.SysService;
-import com.megagao.production.ssm.util.CollectionsFactory;
+import static com.megagao.production.ssm.common.Constants.ACTIVE_USER;
+import static com.megagao.production.ssm.common.Constants.ERROR_HAPPENS;
+
+import java.util.List;
+
+import javax.servlet.http.HttpSession;
+
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.subject.Subject;
 import org.slf4j.Logger;
@@ -13,11 +16,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import javax.servlet.http.HttpSession;
-import java.util.List;
-
-import static com.megagao.production.ssm.common.Constants.ACTIVE_USER;
-import static com.megagao.production.ssm.common.Constants.ERROR_HAPPENS;
+import com.megagao.production.ssm.domain.authority.SysPermission;
+import com.megagao.production.ssm.domain.customize.ActiveUser;
+import com.megagao.production.ssm.service.SysService;
+import com.megagao.production.ssm.util.CollectionsFactory;
 
 
 @Controller

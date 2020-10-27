@@ -2,9 +2,10 @@ package com.megagao.production.ssm.mapper;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Param;
+
 import com.megagao.production.ssm.domain.Material;
 import com.megagao.production.ssm.domain.MaterialExample;
-import org.apache.ibatis.annotations.Param;
 
 public interface MaterialMapper {
 	

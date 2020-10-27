@@ -2,6 +2,11 @@ package com.megagao.production.ssm.service.impl;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import com.megagao.production.ssm.domain.authority.SysUser;
 import com.megagao.production.ssm.domain.authority.SysUserExample;
 import com.megagao.production.ssm.domain.authority.SysUserRole;
@@ -12,11 +17,6 @@ import com.megagao.production.ssm.mapper.authority.SysUserMapper;
 import com.megagao.production.ssm.mapper.authority.SysUserRoleMapper;
 import com.megagao.production.ssm.service.UserService;
 import com.megagao.production.ssm.util.IDUtils;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-
-import com.github.pagehelper.PageHelper;
-import com.github.pagehelper.PageInfo;
 
 @Service
 public class UserServiceImpl implements UserService {

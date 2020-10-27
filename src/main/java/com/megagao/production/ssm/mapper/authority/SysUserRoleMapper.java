@@ -2,9 +2,10 @@ package com.megagao.production.ssm.mapper.authority;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Param;
+
 import com.megagao.production.ssm.domain.authority.SysUserRole;
 import com.megagao.production.ssm.domain.authority.SysUserRoleExample;
-import org.apache.ibatis.annotations.Param;
 
 public interface SysUserRoleMapper {
 	

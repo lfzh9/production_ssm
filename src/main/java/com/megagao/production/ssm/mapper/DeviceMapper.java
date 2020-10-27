@@ -3,6 +3,7 @@ package com.megagao.production.ssm.mapper;
 import java.util.List;
 
 import org.apache.ibatis.annotations.Param;
+
 import com.megagao.production.ssm.domain.Device;
 import com.megagao.production.ssm.domain.DeviceExample;
 

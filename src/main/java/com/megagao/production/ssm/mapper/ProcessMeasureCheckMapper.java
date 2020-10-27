@@ -2,10 +2,11 @@ package com.megagao.production.ssm.mapper;
 
 import java.util.List;
 
-import com.megagao.production.ssm.domain.vo.ProcessMeasureCheckVO;
 import org.apache.ibatis.annotations.Param;
+
 import com.megagao.production.ssm.domain.ProcessMeasureCheck;
 import com.megagao.production.ssm.domain.ProcessMeasureCheckExample;
+import com.megagao.production.ssm.domain.vo.ProcessMeasureCheckVO;
 
 public interface ProcessMeasureCheckMapper {
 	

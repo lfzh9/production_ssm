@@ -2,8 +2,9 @@ package com.megagao.production.ssm.mapper;
 
 import java.util.List;
 
-import com.megagao.production.ssm.domain.Product;
 import org.apache.ibatis.annotations.Param;
+
+import com.megagao.production.ssm.domain.Product;
 import com.megagao.production.ssm.domain.ProductExample;
 
 public interface ProductMapper {

@@ -1,9 +1,9 @@
 package com.megagao.production.ssm.domain.vo;
 
 
+import com.megagao.production.ssm.domain.Device;
 import com.megagao.production.ssm.domain.Process;
 import com.megagao.production.ssm.domain.Product;
-import com.megagao.production.ssm.domain.Device;
 
 public class WorkVO {
 	

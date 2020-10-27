@@ -1,9 +1,9 @@
 package com.megagao.production.ssm.domain.vo;
 
+import java.util.Date;
+
 import com.megagao.production.ssm.domain.Material;
 import com.megagao.production.ssm.domain.Work;
-
-import java.util.Date;
 
 public class MaterialConsumeVO {
     private String consumeId;

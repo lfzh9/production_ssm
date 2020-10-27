@@ -2,9 +2,10 @@ package com.megagao.production.ssm.mapper;
 
 import java.util.List;
 
-import com.megagao.production.ssm.domain.DeviceCheckExample;
 import org.apache.ibatis.annotations.Param;
+
 import com.megagao.production.ssm.domain.DeviceCheck;
+import com.megagao.production.ssm.domain.DeviceCheckExample;
 
 public interface DeviceCheckMapper {
 	

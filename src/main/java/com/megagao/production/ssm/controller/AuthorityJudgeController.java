@@ -1,22 +1,20 @@
 package com.megagao.production.ssm.controller;
 
-import java.util.HashMap;
+import static com.megagao.production.ssm.common.Constants.NO_PERMISSION;
+
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
-import com.megagao.production.ssm.domain.customize.ActiveUser;
-import com.megagao.production.ssm.util.CollectionsFactory;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.subject.Subject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import static com.megagao.production.ssm.common.Constants.NO_PERMISSION;
+import com.megagao.production.ssm.domain.customize.ActiveUser;
+import com.megagao.production.ssm.util.CollectionsFactory;
 
 /**
  * created on 2017年3月25日 

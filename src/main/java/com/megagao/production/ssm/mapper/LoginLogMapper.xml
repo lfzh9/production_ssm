@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="com.megagao.production.ssm.mapper.LoginLogMapper">
+<select id="find" resultType="LoginLog">
+	select * from loginLog
+</select>
+<select id="loadLoginLogById" resultType="LoginLog" parameterType="int">
+	select * from loginLog where id = #{id}
+</select>
+<select id="searchLoginLogById" resultType="LoginLog" parameterType="int">
+	select * from loginLog where id like CONCAT('%',#{id},'%' ) 
+</select>
+<select id="searchLoginLogByDate" resultType="LoginLog" parameterType="String">
+	select * from loginlog where date like CONCAT('%',#{date},'%' )
+</select>
+<select id="searchLoginLogByName" resultType="LoginLog" parameterType="string">
+	select * from loginLog where name like CONCAT('%',#{name},'%' ) 
+</select>
+<insert id="insert" parameterType="LoginLog">
+	insert into loginLog (date,IP,name)
+    values (#{date,jdbcType=VARCHAR},#{ip,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR})
+</insert>
+
+
+<delete id="deleteByPrimaryKey" >
+	delete from loginLog where id=#{id}
+</delete>
+
+<!-- 批量删除 -->
+	<delete id="deleteBatch">
+		DELETE
+		FROM
+			loginLog
+		WHERE
+			id IN
+		<foreach collection="array" item="id" open="(" close=")" separator=",">
+			#{id}
+		</foreach>
+	</delete>
+</mapper>

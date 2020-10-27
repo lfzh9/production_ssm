@@ -2,19 +2,18 @@ package com.megagao.production.ssm.service.impl;
 
 import java.util.List;
 
-
-import com.megagao.production.ssm.domain.MaterialConsume;
-import com.megagao.production.ssm.domain.MaterialConsumeExample;
-import com.megagao.production.ssm.domain.customize.CustomResult;
-import com.megagao.production.ssm.domain.vo.MaterialConsumeVO;
-import com.megagao.production.ssm.mapper.MaterialConsumeMapper;
-import com.megagao.production.ssm.service.MaterialConsumeService;
-import com.megagao.production.ssm.domain.customize.EUDataGridResult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
+import com.megagao.production.ssm.domain.MaterialConsume;
+import com.megagao.production.ssm.domain.MaterialConsumeExample;
+import com.megagao.production.ssm.domain.customize.CustomResult;
+import com.megagao.production.ssm.domain.customize.EUDataGridResult;
+import com.megagao.production.ssm.domain.vo.MaterialConsumeVO;
+import com.megagao.production.ssm.mapper.MaterialConsumeMapper;
+import com.megagao.production.ssm.service.MaterialConsumeService;
 
 @Service
 public class MaterialConsumeServiceImpl implements MaterialConsumeService {

@@ -3,6 +3,7 @@ package com.megagao.production.ssm.mapper;
 import java.util.List;
 
 import org.apache.ibatis.annotations.Param;
+
 import com.megagao.production.ssm.domain.UnqualifyApply;
 import com.megagao.production.ssm.domain.UnqualifyApplyExample;
 import com.megagao.production.ssm.domain.vo.UnqualifyApplyVO;

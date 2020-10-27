@@ -2,11 +2,8 @@ package com.megagao.production.ssm.controller.system;
 
 import java.util.List;
 
-import com.megagao.production.ssm.domain.vo.RoleVO;
-import com.megagao.production.ssm.domain.customize.CustomResult;
-import com.megagao.production.ssm.domain.customize.EUDataGridResult;
-import com.megagao.production.ssm.domain.authority.SysRole;
-import com.megagao.production.ssm.service.RoleService;
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
@@ -16,7 +13,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import javax.validation.Valid;
+import com.megagao.production.ssm.domain.authority.SysRole;
+import com.megagao.production.ssm.domain.customize.CustomResult;
+import com.megagao.production.ssm.domain.customize.EUDataGridResult;
+import com.megagao.production.ssm.domain.vo.RoleVO;
+import com.megagao.production.ssm.service.RoleService;
 
 @Controller
 @RequestMapping("/role")
