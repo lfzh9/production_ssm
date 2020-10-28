@@ -1,7 +1,5 @@
 package com.megagao.production.ssm.controller;
 
-import java.util.List;
-
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.megagao.production.ssm.common.CommonController;
 import com.megagao.production.ssm.domain.Mynote;
 import com.megagao.production.ssm.domain.customize.CustomResult;
 import com.megagao.production.ssm.domain.customize.EUDataGridResult;
@@ -19,7 +18,7 @@ import com.megagao.production.ssm.service.MynoteService;
 
 @Controller
 @RequestMapping("/mynote")
-public class MynoteController {
+public class MynoteController extends CommonController{
 	@Autowired
 	private MynoteService mynoteService;
 	
@@ -52,7 +51,7 @@ public class MynoteController {
 		if(mynoteService.get(mynote.getId()) != null){
 			result = new CustomResult(0, "该便签编号已经存在，请更换便签编号！", null);
 		}else{
-			
+			log("添加便签：{"+mynote+"}");
 			result = mynoteService.insert(mynote);
 		}
 		return result;
@@ -72,6 +71,7 @@ public class MynoteController {
 			FieldError fieldError = bindingResult.getFieldError();
 			return CustomResult.build(100, fieldError.getDefaultMessage());
 		}
+		log("修改便签：{"+mynote+"}");
 		return mynoteService.updateAll(mynote);
 	}
 	
@@ -86,6 +86,11 @@ public class MynoteController {
 	@ResponseBody
 	private CustomResult deleteBatch(String[] ids) throws Exception {
 		CustomResult result = mynoteService.deleteBatch(ids);
+		String str = null;
+		for (String id : ids) {
+			str=id+",";
+		}
+		log("删除便签：{" + str +"}");
 		return result;
 	}
 	
@@ -96,6 +101,8 @@ public class MynoteController {
 	@ResponseBody
 	public EUDataGridResult searchMynoteByTitle(Integer page, Integer rows, String searchValue) throws Exception{
 		EUDataGridResult result = mynoteService.searchMynoteByTitle(page, rows, searchValue);
+	
+		log("查询便签：{标题" + searchValue +"}");
 		return result;
 	}
 	
@@ -104,6 +111,7 @@ public class MynoteController {
 	@ResponseBody
 	public EUDataGridResult searchMynoteByPerson(Integer page, Integer rows, String searchValue) throws Exception{
 		EUDataGridResult result = mynoteService.searchMynoteByPerson(page, rows, searchValue);
+		log("查询便签：{发布人" + searchValue +"}");
 		return result;
 	}
 	
@@ -112,6 +120,7 @@ public class MynoteController {
 		@ResponseBody
 		public EUDataGridResult searchMynoteByStartTime(Integer page, Integer rows, String searchValue) throws Exception{
 			EUDataGridResult result = mynoteService.searchMynoteByTime(page, rows, searchValue);
+			log("查询便签：{" + searchValue +"}");
 			return result;
 		}
 		

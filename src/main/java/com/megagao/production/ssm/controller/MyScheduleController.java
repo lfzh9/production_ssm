@@ -1,7 +1,5 @@
 package com.megagao.production.ssm.controller;
 
-import java.util.List;
-
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.megagao.production.ssm.common.CommonController;
 import com.megagao.production.ssm.domain.MySchedule;
 import com.megagao.production.ssm.domain.customize.CustomResult;
 import com.megagao.production.ssm.domain.customize.EUDataGridResult;
@@ -19,7 +18,7 @@ import com.megagao.production.ssm.service.MyScheduleService;
 
 @Controller
 @RequestMapping("/mySchedule")
-public class MyScheduleController {
+public class MyScheduleController extends CommonController{
 	@Autowired
 	private MyScheduleService myScheduleService;
 	
@@ -52,7 +51,7 @@ public class MyScheduleController {
 		if(myScheduleService.get(mySchedule.getId()) != null){
 			result = new CustomResult(0, "该日程编号已经存在，请更换日程编号！", null);
 		}else{
-			
+			log("添加日程：{"+mySchedule+"}");
 			result = myScheduleService.insert(mySchedule);
 		}
 		return result;
@@ -72,6 +71,7 @@ public class MyScheduleController {
 			FieldError fieldError = bindingResult.getFieldError();
 			return CustomResult.build(100, fieldError.getDefaultMessage());
 		}
+		log("修改日程：{"+mySchedule+"}");
 		return myScheduleService.updateAll(mySchedule);
 	}
 	
@@ -86,6 +86,11 @@ public class MyScheduleController {
 	@ResponseBody
 	private CustomResult deleteBatch(String[] ids) throws Exception {
 		CustomResult result = myScheduleService.deleteBatch(ids);
+		String str = null;
+		for (String id : ids) {
+			str=id+",";
+		}
+		log("删除日程：{" + str +"}");
 		return result;
 	}
 	
@@ -96,6 +101,7 @@ public class MyScheduleController {
 	@ResponseBody
 	public EUDataGridResult searchMyScheduleByTitle(Integer page, Integer rows, String searchValue) throws Exception{
 		EUDataGridResult result = myScheduleService.searchMyScheduleByTitle(page, rows, searchValue);
+		log("查询日程：{日程标题："+searchValue+"}");
 		return result;
 	}
 	//根据订单id查找
@@ -103,6 +109,7 @@ public class MyScheduleController {
 	@ResponseBody
 	public EUDataGridResult searchMyScheduleByType(Integer page, Integer rows, String searchValue) throws Exception{
 		EUDataGridResult result = myScheduleService.searchMyScheduleByType(page, rows, searchValue);
+		log("查询日程：{日程类型："+searchValue+"}");
 		return result;
 	}
 	//根据订单id查找
@@ -110,6 +117,7 @@ public class MyScheduleController {
 	@ResponseBody
 	public EUDataGridResult searchMyScheduleByPerson(Integer page, Integer rows, String searchValue) throws Exception{
 		EUDataGridResult result = myScheduleService.searchMyScheduleByPerson(page, rows, searchValue);
+		log("查询日程：{日程发布人："+searchValue+"}");
 		return result;
 	}
 	
@@ -118,6 +126,7 @@ public class MyScheduleController {
 		@ResponseBody
 		public EUDataGridResult searchMyScheduleByStartTime(Integer page, Integer rows, String searchValue) throws Exception{
 			EUDataGridResult result = myScheduleService.searchMyScheduleByStartTime(page, rows, searchValue);
+			log("查询日程：{日程开始时间："+searchValue+"}");
 			return result;
 		}
 		

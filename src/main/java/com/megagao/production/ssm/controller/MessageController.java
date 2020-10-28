@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.megagao.production.ssm.common.CommonController;
 import com.megagao.production.ssm.domain.Message;
 import com.megagao.production.ssm.domain.customize.CustomResult;
 import com.megagao.production.ssm.domain.customize.EUDataGridResult;
@@ -19,7 +20,7 @@ import com.megagao.production.ssm.service.MessageService;
 
 @Controller
 @RequestMapping("/message")
-public class MessageController {
+public class MessageController extends CommonController{
 	@Autowired
 	private MessageService messageService;
 	
@@ -57,7 +58,7 @@ public class MessageController {
 		if(messageService.get(message.getId()) != null){
 			result = new CustomResult(0, "该消息编号已经存在，请更换消息编号！", null);
 		}else{
-			
+			log("添加消息：{"+message+"}");
 			result = messageService.insert(message);
 		}
 		return result;
@@ -77,6 +78,7 @@ public class MessageController {
 			FieldError fieldError = bindingResult.getFieldError();
 			return CustomResult.build(100, fieldError.getDefaultMessage());
 		}
+		log("修改消息：{"+message+"}");
 		return messageService.updateAll(message);
 	}
 	
@@ -91,6 +93,11 @@ public class MessageController {
 	@ResponseBody
 	private CustomResult deleteBatch(String[] ids) throws Exception {
 		CustomResult result = messageService.deleteBatch(ids);
+		String str = null;
+		for (String id : ids) {
+			str=id+",";
+		}
+		log("删除消息：{" + str +"}");
 		return result;
 	}
 	
@@ -101,6 +108,7 @@ public class MessageController {
 	@ResponseBody
 	public EUDataGridResult searchMessageByTitle(Integer page, Integer rows, String searchValue) throws Exception{
 		EUDataGridResult result = messageService.searchMessageByTitle(page, rows, searchValue);
+		log("查询消息：{标题：" + searchValue +"}");
 		return result;
 	}
 	//根据订单id查找
@@ -108,6 +116,7 @@ public class MessageController {
 	@ResponseBody
 	public EUDataGridResult searchMessageByType(Integer page, Integer rows, String searchValue) throws Exception{
 		EUDataGridResult result = messageService.searchMessageByType(page, rows, searchValue);
+		log("查询消息：{类型：" + searchValue +"}");
 		return result;
 	}
 	//根据订单id查找
@@ -115,6 +124,7 @@ public class MessageController {
 	@ResponseBody
 	public EUDataGridResult searchMessageByPerson(Integer page, Integer rows, String searchValue) throws Exception{
 		EUDataGridResult result = messageService.searchMessageByPerson(page, rows, searchValue);
+		log("查询消息：{发布人：" + searchValue +"}");
 		return result;
 	}
 	//根据订单id查找
@@ -122,6 +132,7 @@ public class MessageController {
 		@ResponseBody
 		public EUDataGridResult searchMessageByTime(Integer page, Integer rows, String searchValue) throws Exception{
 			EUDataGridResult result = messageService.searchMessageByTime(page, rows, searchValue);
+			log("查询消息：{时间：" + searchValue +"}");
 			return result;
 		}
 	

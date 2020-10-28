@@ -19,19 +19,6 @@ public class CommonController {
 			operationLog.setDate(new Date());
 			operationLog.setDesc(desc);
 			operationLog.setName(LoginController.a);
-			System.out.println("1111111111111111111111111111111111");
-			System.out.println("1111111111111111111111111111111111");
-			System.out.println("1111111111111111111111111111111111");
-			System.out.println("1111111111111111111111111111111111");
-			System.out.println("      ");
-			System.out.println("1111111111111111111111111111111111");
-			System.out.println("1111111111111111111111111111111111");
-			System.out.println("1111111111111111111111111111111111");
-			System.out.println("1111111111111111111111111111111111");
-			System.out.println("1111111111111111111111111111111111");
-			System.out.println("1111111111111111111111111111111111");
-			System.out.println("1111111111111111111111111111111111");
-			System.out.println(operationLog);
 			operationLogService.insert(operationLog);
 		
 		} catch (Exception e) {

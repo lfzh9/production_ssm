@@ -1,7 +1,6 @@
 package com.megagao.production.ssm.domain;
 
 
-import com.sun.tools.internal.xjc.reader.xmlschema.bindinfo.BIConversion.User;
 
 public class Message {
 	private String id;
