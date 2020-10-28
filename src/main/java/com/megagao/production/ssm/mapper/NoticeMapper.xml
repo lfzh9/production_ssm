@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="com.megagao.production.ssm.mapper.NoticeMapper">
+<select id="find" resultType="Notice">
+	select type,text,time from message
+</select>
+<select id="loadMessageById" resultType="Notice" parameterType="string">
+	select type,text,time from message where id = #{id}
+</select>
+
+</mapper>

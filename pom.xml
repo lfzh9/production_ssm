@@ -12,7 +12,7 @@
 	<name>production_ssm Maven Webapp</name>
 	<!-- FIXME change it to the project's website -->
 	<url>http://www.example.com</url>
-
+ 
 	<!-- 设置字符编码和 java版本 -->
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>

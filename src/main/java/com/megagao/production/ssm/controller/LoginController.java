@@ -131,6 +131,7 @@ public class LoginController extends CommonController{
 	    if (!currentUser.isAuthenticated()) {
 	    	UsernamePasswordToken token = new UsernamePasswordToken(username, password);
 	        try{
+	        	session.setAttribute("login_user", username);
 	            currentUser.login(token);
 	            
 	            //数据库添加登录日志

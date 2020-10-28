@@ -148,6 +148,21 @@
 		<label><input name="permissionOption3" type="checkbox" value="52" />员工修改 </label> 
 		<label><input name="permissionOption3" type="checkbox" value="53" />员工删除 </label> 
 		<br><br>
+		<span style="font-weight: bold;">消息管理：</span>
+		<label><input name="permissionOption3" type="checkbox" value="281" />消息新增 </label> 
+		<label><input name="permissionOption3" type="checkbox" value="282" />消息修改 </label> 
+		<label><input name="permissionOption3" type="checkbox" value="283" />消息删除 </label> 
+		<br><br>
+		<span style="font-weight: bold;">我的日程：</span>
+		<label><input name="permissionOption3" type="checkbox" value="501" />日程新增 </label> 
+		<label><input name="permissionOption3" type="checkbox" value="502" />日程修改 </label> 
+		<label><input name="permissionOption3" type="checkbox" value="503" />日程删除 </label> 
+		<br><br>
+		<span style="font-weight: bold;">我的便签：</span>
+		<label><input name="permissionOption3" type="checkbox" value="511" />便签新增 </label> 
+		<label><input name="permissionOption3" type="checkbox" value="512" />便签修改 </label> 
+		<label><input name="permissionOption3" type="checkbox" value="513" />便签删除 </label> 
+		<br><br>
 		<span style="font-weight: bold;">用户管理：</span>
 		<label><input name="permissionOption3" type="checkbox" value="201" />用户新增 </label> 
 		<label><input name="permissionOption3" type="checkbox" value="202" />用户修改 </label> 

@@ -11,7 +11,7 @@
         	<th data-options="field:'ck',checkbox:true"></th>
         	<th data-options="field:'empId',align:'center',width:100">员工编号</th>
             <th data-options="field:'empName',align:'center',width:100">员工姓名</th>
-            <th data-options="field:'sex',align:'center',width:100,formatter:TAOTAO.formatSex">性别</th>
+            <th data-options="field:'sex',align:'center',width:100">性别</th>
             <th data-options="field:'department',align:'center',width:100,formatter:formatDepartment">所属部门</th>
             <th data-options="field:'idCode',align:'center',width:150">身份证号</th>
             <th data-options="field:'education',align:'center',width:100">学历</th>

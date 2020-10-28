@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="com.megagao.production.ssm.mapper.MessageMapper">
+<select id="find" resultType="Message">
+	select * from message
+</select>
+<select id="loadMessageById" resultType="Message" parameterType="string">
+	select * from message where id = #{id}
+</select>
+<select id="searchMessageByTitle" resultType="Message" parameterType="string">
+	select * from message where title like CONCAT('%',#{title},'%' ) 
+</select>
+<select id="searchMessageByType" resultType="Message" parameterType="string">
+	select * from message where type like CONCAT('%',#{type},'%' ) 
+</select>
+<select id="searchMessageByPerson" resultType="Message" parameterType="string">
+	select * from message where person like CONCAT('%',#{person},'%' ) 
+</select>
+<select id="searchMessageByTime" resultType="Message" parameterType="string">
+	select * from message where time like CONCAT('%',#{time},'%' ) 
+</select>
+<insert id="insert" parameterType="Message">
+	insert into message (id,title,text,type,person,time)
+    values (#{id,jdbcType=VARCHAR}, #{title,jdbcType=VARCHAR}, #{text,jdbcType=VARCHAR}
+    ,#{type,jdbcType=VARCHAR},#{person,jdbcType=VARCHAR},#{time,jdbcType=VARCHAR})
+</insert>
+
+<update id="update" parameterType="Message">
+	update message set title=#{title},text=#{text},type=#{type},person=#{person},time=#{time} where id = #{id}
+</update>
+
+<delete id="deleteByPrimaryKey">
+	delete from message where id=#{id}
+</delete>
+<!-- 批量删除 -->
+	<delete id="deleteBatch">
+		DELETE
+		FROM
+			message
+		WHERE
+			id IN
+		<foreach collection="array" item="id" open="(" close=")" separator=",">
+			#{id}
+		</foreach>
+	</delete>
+</mapper>

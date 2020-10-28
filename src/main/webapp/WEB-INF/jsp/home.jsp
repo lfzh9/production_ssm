@@ -23,6 +23,8 @@
 
 	<!-- North Title -->
 	<div class="divNorth" style="height:100px;" data-options="region:'north'" >
+	<!-- 公告展示 -->
+		<jsp:include page="alert_message.jsp" flush="true"></jsp:include>
 		<table id="_TableHeader" width="100%" border="0" cellpadding="0"
 		cellspacing="0" class="bluebg">
 		<tbody>
@@ -156,6 +158,33 @@
 				</li>
 			</ul>
 		</div>
+		<div title="消息传递" data-options="selected:true" style="padding:10px">
+			<ul id="messageMonitor" class="easyui-tree"
+				data-options="animate:true,linSes:true">
+				<li><span>消息传递</span>
+					<ul>
+						<li id=81 data-options="attributes:{'url':'message/find'}">消息管理</li>
+					</ul>
+					<ul>
+						<li id=82 data-options="attributes:{'url':'notice/find'}">公告</li>
+					</ul>
+				</li>
+			</ul>
+		</div>
+		<div title="日程管理" data-options="selected:true" style="padding:10px">
+			<ul id="myScheduleMonitor" class="easyui-tree"
+				data-options="animate:true,linSes:true">
+				<li><span>日程管理</span>
+					<ul>
+						<li id=91 data-options="attributes:{'url':'mySchedule/find'}">我的日程</li>
+					</ul>
+					<ul>
+						<li id=92 data-options="attributes:{'url':'mynote/find'}">我的便签</li>
+					</ul>
+				</li>
+			</ul>
+		</div>
+		
 		<div title="机构监控" data-options="selected:true" style="padding:10px">
 			<ul id="branchMonitor" class="easyui-tree"
 				data-options="animate:true,lines:true">
@@ -208,8 +237,11 @@
 						["工艺监控","工艺","工艺要求","工艺计划","工序"],
 						["物料监控","物料信息","物料收入","物料消耗"],
 						["质量监控","不合格品管理","成品计量质检","成品计数质检","工序计量质检","工序计数质检"],
-						["人员监控","部门管理","员工管理"]
-						["机构监控"]
+						["人员监控","部门管理","员工管理"],
+						["机构监控"],
+						["消息传递","消息管理","公告"],
+						["日程管理","我的日程","我的便签"]
+						
 					  ];
 					  
 		function isContains(str, substr) {
@@ -262,6 +294,16 @@
 									var node = $('#branchMonitor').tree('find',71);
 									$('#branchMonitor').tree('expandTo', node.target).tree('select', node.target);
 									break;
+								case 7 :
+									$('#HomeFuncAccordion').accordion('select',allItem[7][0]);
+									var node = $('#messageMonitor').tree('find',81);
+									$('#messageMonitor').tree('expandTo', node.target).tree('select', node.target);
+									break;
+								case 8 :
+									$('#HomeFuncAccordion').accordion('select',allItem[8][0]);
+									var node = $('#messageMonitor').tree('find',91);
+									$('#myScheduleMonitor').tree('expandTo', node.target).tree('select', node.target);
+									break;
 								default:
 									break; 
 							}
@@ -303,6 +345,16 @@
 									var node = $('#branchMonitor').tree('find',k);
 									$('#branchMonitor').tree('expandTo', node.target).tree('select', node.target);
 									break;
+								case 7 :
+									$('#HomeFuncAccordion').accordion('select',allItem[7][0]);
+									var node = $('#messageMonitor').tree('find',k);
+									$('#messageMonitor').tree('expandTo', node.target).tree('select', node.target);
+									break;
+								case 8 :
+									$('#HomeFuncAccordion').accordion('select',allItem[8][0]);
+									var node = $('#messageMonitor').tree('find',91);
+									$('#myScheduleMonitor').tree('expandTo', node.target).tree('select', node.target);
+									break;
 								default:
 									break; 
 							}
@@ -337,6 +389,43 @@
 					}
 				}
 			});
+			$('#messageMonitor').tree({
+				onClick : function(node) {
+					if ($('#messageMonitor').tree("isLeaf", node.target)) {
+					var tabs2 = $("#tabs");
+						var tab2 = tabs2.tabs("getTab", node.text);
+						if (tab2) {
+							tabs2.tabs("select", node.text);
+						} else {
+							tabs2.tabs('add', {
+								title : node.text,
+								href : node.attributes.url,
+								closable : true,
+								bodyCls : "content"
+							});
+						}
+					}
+				}
+			});
+			$('#myScheduleMonitor').tree({
+				onClick : function(node) {
+					if ($('#myScheduleMonitor').tree("isLeaf", node.target)) {
+					var tabs2 = $("#tabs");
+						var tab2 = tabs2.tabs("getTab", node.text);
+						if (tab2) {
+							tabs2.tabs("select", node.text);
+						} else {
+							tabs2.tabs('add', {
+								title : node.text,
+								href : node.attributes.url,
+								closable : true,
+								bodyCls : "content"
+							});
+						}
+					}
+				}
+			});
+			
 			$('#branchMonitor').tree({
 				onClick : function(node) {
 					if ($('#branchMonitor').tree("isLeaf", node.target)) {

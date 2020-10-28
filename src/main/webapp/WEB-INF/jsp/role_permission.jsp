@@ -129,6 +129,21 @@
 			<label><input name="permissionOption" type="checkbox" value="262" />设备维修修改 </label> 
 			<label><input name="permissionOption" type="checkbox" value="263" />设备维修删除 </label> 
 			<br><br>
+			<span style="font-weight: bold;">消息管理：</span>
+			<label><input name="permissionOption" type="checkbox" value="281" />消息新增 </label> 
+			<label><input name="permissionOption" type="checkbox" value="282" />消息修改 </label> 
+			<label><input name="permissionOption" type="checkbox" value="283" />消息删除 </label> 
+			<br><br>
+			<span style="font-weight: bold;">我的日程：</span>
+			<label><input name="permissionOption" type="checkbox" value="501" />日程新增 </label> 
+			<label><input name="permissionOption" type="checkbox" value="502" />日程修改 </label> 
+			<label><input name="permissionOption" type="checkbox" value="503" />日程删除 </label> 
+			<br><br>
+			<span style="font-weight: bold;">我的便签：</span>
+			<label><input name="permissionOption" type="checkbox" value="511" />便签新增 </label> 
+			<label><input name="permissionOption" type="checkbox" value="512" />便签修改 </label> 
+			<label><input name="permissionOption" type="checkbox" value="513" />便签删除 </label> 
+			<br><br>
 			<span style="font-weight: bold;">部门管理：</span>
 			<label><input name="permissionOption" type="checkbox" value="41" />部门新增 </label> 
 			<label><input name="permissionOption" type="checkbox" value="42" />部门修改 </label> 
