@@ -21,7 +21,15 @@ public class Manufacture {
 
     private String technologyId;
     
-    public String getManufactureSn() {
+    @Override
+	public String toString() {
+		return "Manufacture [manufactureSn=" + manufactureSn
+				+ ", launchQuantity=" + launchQuantity + ", beginDate="
+				+ beginDate + ", endDate=" + endDate + ", orderId=" + orderId
+				+ ", technologyId=" + technologyId + "]";
+	}
+
+	public String getManufactureSn() {
         return manufactureSn;
     }
 

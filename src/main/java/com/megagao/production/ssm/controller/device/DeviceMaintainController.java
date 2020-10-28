@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.megagao.production.ssm.common.CommonController;
 import com.megagao.production.ssm.domain.DeviceMaintain;
 import com.megagao.production.ssm.domain.customize.CustomResult;
 import com.megagao.production.ssm.domain.customize.EUDataGridResult;
@@ -18,7 +19,7 @@ import com.megagao.production.ssm.service.DeviceMaintainService;
 
 @Controller
 @RequestMapping("/deviceMaintain")
-public class DeviceMaintainController {
+public class DeviceMaintainController extends CommonController{
 
 	@Autowired
 	private DeviceMaintainService deviceMaintainService;
@@ -58,6 +59,7 @@ public class DeviceMaintainController {
 		if(deviceMaintainService.get(deviceMaintain.getDeviceMaintainId()) != null){
 			result = new CustomResult(0, "该设备维修编号已经存在，请更换设备维修编号！", null);
 		}else{
+			log("设备维修：添加数据： {"+deviceMaintain+"}");
 			result = deviceMaintainService.insert(deviceMaintain);
 		}
 		return result;
@@ -70,6 +72,8 @@ public class DeviceMaintainController {
 			FieldError fieldError = bindingResult.getFieldError();
 			return CustomResult.build(100, fieldError.getDefaultMessage());
 		}
+		log("设备维修：修改数据： {"+deviceMaintain+"}");
+
 		return  deviceMaintainService.update(deviceMaintain);
 	}
 	
@@ -77,6 +81,7 @@ public class DeviceMaintainController {
 	@ResponseBody
 	private CustomResult deleteBatch(String[] ids) throws Exception {
 		CustomResult result = deviceMaintainService.deleteBatch(ids);
+		log("设备维修：删除数据： {"+ids+"}");
 		return result;
 	}
 	
@@ -97,6 +102,7 @@ public class DeviceMaintainController {
 	public EUDataGridResult searchDeviceMaintainByDeviceMaintainId(Integer page, Integer rows, String searchValue) 
 			throws Exception{
 		EUDataGridResult result = deviceMaintainService.searchDeviceMaintainByDeviceMaintainId(page, rows, searchValue);
+		log("设备维修：查询数据： {设备维修编号="+searchValue+"}");
 		return result;
 	}
 	
@@ -106,6 +112,7 @@ public class DeviceMaintainController {
 	public EUDataGridResult searchDeviceMaintainByDeviceFaultId(Integer page, Integer rows, String searchValue) 
 			throws Exception{
 		EUDataGridResult result = deviceMaintainService.searchDeviceMaintainByDeviceFaultId(page, rows, searchValue);
+		log("设备维修：查询数据： {设备故障编号="+searchValue+"}");
 		return result;
 	}
 }

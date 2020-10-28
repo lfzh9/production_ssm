@@ -12,7 +12,14 @@ public class FinalCountCheckExample {
 
     protected List<Criteria> oredCriteria;
 
-    public FinalCountCheckExample() {
+    @Override
+	public String toString() {
+		return "FinalCountCheckExample [orderByClause=" + orderByClause
+				+ ", distinct=" + distinct + ", oredCriteria=" + oredCriteria
+				+ "]";
+	}
+
+	public FinalCountCheckExample() {
         oredCriteria = new ArrayList<Criteria>();
     }
 

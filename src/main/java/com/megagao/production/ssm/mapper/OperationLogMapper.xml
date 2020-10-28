@@ -15,8 +15,8 @@
 	select * from operationLog where name like CONCAT('%',#{name},'%' ) 
 </select>
 <insert id="insert" parameterType="OperationLog">
-	insert into operationLog (date,desc,name)
-    values (#{date,jdbcType=VARCHAR},#{desc,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR})
+	insert into operationLog (date,`desc`,name)
+    values (#{date,jdbcType=VARCHAR},#{desc,jdbcType=VARCHAR},#{name,jdbcType=VARCHAR})
 </insert>
 
 

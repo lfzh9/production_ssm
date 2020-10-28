@@ -12,7 +12,14 @@ public class ProcessCountCheckExample {
 
     protected List<Criteria> oredCriteria;
 
-    public ProcessCountCheckExample() {
+    @Override
+	public String toString() {
+		return "ProcessCountCheckExample [orderByClause=" + orderByClause
+				+ ", distinct=" + distinct + ", oredCriteria=" + oredCriteria
+				+ "]";
+	}
+
+	public ProcessCountCheckExample() {
         oredCriteria = new ArrayList<Criteria>();
     }
 

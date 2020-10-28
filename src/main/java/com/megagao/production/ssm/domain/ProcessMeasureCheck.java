@@ -27,7 +27,16 @@ public class ProcessMeasureCheck {
     @Size(max=5000, message="{note.length.error}")
     private String note;
 
-    public String getpMeasureCheckId() {
+    @Override
+	public String toString() {
+		return "ProcessMeasureCheck [pMeasureCheckId=" + pMeasureCheckId
+				+ ", processId=" + processId + ", checkItem=" + checkItem
+				+ ", cdate=" + cdate + ", measureData=" + measureData
+				+ ", empId=" + empId + ", result=" + result + ", note=" + note
+				+ "]";
+	}
+
+	public String getpMeasureCheckId() {
         return pMeasureCheckId;
     }
 

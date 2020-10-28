@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.megagao.production.ssm.common.CommonController;
 import com.megagao.production.ssm.domain.Technology;
 import com.megagao.production.ssm.domain.customize.CustomResult;
 import com.megagao.production.ssm.domain.customize.EUDataGridResult;
@@ -20,7 +21,7 @@ import com.megagao.production.ssm.service.TechnologyService;
 
 @Controller
 @RequestMapping("/technology")
-public class TechnologyController {
+public class TechnologyController extends CommonController{
 
 	@Autowired
 	private TechnologyService technologyService;
@@ -73,6 +74,7 @@ public class TechnologyController {
 		if(technologyService.get(technology.getTechnologyId()) != null){
 			result = new CustomResult(0, "该工艺编号已经存在，请更换工艺编号！", null);
 		}else{
+			log("添加工艺：{"+technology+"}");
 			result = technologyService.insert(technology);
 		}
 		return result;
@@ -85,6 +87,7 @@ public class TechnologyController {
 			FieldError fieldError = bindingResult.getFieldError();
 			return CustomResult.build(100, fieldError.getDefaultMessage());
 		}
+		log("修改工艺：{"+technology+"}");
 		return technologyService.updateAll(technology);
 	}
 	
@@ -92,6 +95,7 @@ public class TechnologyController {
 	@ResponseBody
 	private CustomResult deleteBatch(String[] ids) throws Exception {
 		CustomResult result = technologyService.deleteBatch(ids);
+		log("删除工艺：{"+ids+"}");
 		return result;
 	}
 	
@@ -101,6 +105,7 @@ public class TechnologyController {
 	public EUDataGridResult searchTechnologyByTechnologyId(Integer page, Integer rows, String searchValue)
 			throws Exception{
 		EUDataGridResult result = technologyService.searchTechnologyByTechnologyId(page, rows, searchValue);
+		log("查询工艺：{工艺id:"+searchValue+"}");
 		return result;
 	}
 	
@@ -110,6 +115,7 @@ public class TechnologyController {
 	public EUDataGridResult searchTechnologyByTechnologyName(Integer page, Integer rows, String searchValue)
 			throws Exception{
 		EUDataGridResult result = technologyService.searchTechnologyByTechnologyName(page, rows, searchValue);
+		log("查询工艺：{工艺名："+searchValue+"}");
 		return result;
 	}
 	

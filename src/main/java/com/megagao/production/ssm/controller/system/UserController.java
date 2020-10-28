@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.megagao.production.ssm.common.CommonController;
 import com.megagao.production.ssm.domain.authority.SysUser;
 import com.megagao.production.ssm.domain.customize.CustomResult;
 import com.megagao.production.ssm.domain.customize.EUDataGridResult;
@@ -18,7 +19,7 @@ import com.megagao.production.ssm.service.UserService;
 
 @Controller
 @RequestMapping("/user")
-public class UserController {
+public class UserController extends CommonController{
 
 	@Autowired
 	private UserService userService;
@@ -70,6 +71,7 @@ public class UserController {
 		}else if(userService.get(user.getId()) != null){
 			return CustomResult.build(101, "该用户编号已经存在，请更换用户编号！");
 		}
+		log("添加用户：{"+user+"}");
 		result = userService.insert(user);
 		return result;
 	}
@@ -95,7 +97,7 @@ public class UserController {
 		if(userService.findByUserNameAndId(user.getUsername(), user.getId()).size()>0){
 			return CustomResult.build(101, "该用户名已经存在，请更换用户名！");
 		}
-		
+		log("修改用户：{"+user+"}");
 		result = userService.updateAll(user);
 		return result;
 	}
@@ -111,6 +113,7 @@ public class UserController {
 	@ResponseBody
 	private CustomResult deleteBatch(String[] ids) throws Exception {
 		CustomResult result = userService.deleteBatch(ids);
+		log("删除用户：{"+ids+"}");
 		return result;
 	}
 	
@@ -127,6 +130,7 @@ public class UserController {
 	public EUDataGridResult searchUserByUserId(Integer page, Integer rows, String searchValue) 
 			throws Exception{
 		EUDataGridResult result = userService.searchUserByUserId(page, rows, searchValue);
+		log("查询用户：{用户id："+searchValue+"}");
 		return result;
 	}
 	
@@ -136,6 +140,7 @@ public class UserController {
 	public EUDataGridResult searchUserByUserName(Integer page, Integer rows, String searchValue) 
 			throws Exception{
 		EUDataGridResult result = userService.searchUserByUserName(page, rows, searchValue);
+		log("查询用户：{用户名："+searchValue+"}");
 		return result;
 	}
 	
@@ -145,6 +150,7 @@ public class UserController {
 	public EUDataGridResult searchUserByRoleName(Integer page, Integer rows, String searchValue) 
 			throws Exception{
 		EUDataGridResult result = userService.searchUserByRoleName(page, rows, searchValue);
+		log("查询用户：{角色名"+searchValue+"}");
 		return result;
 	}
 }

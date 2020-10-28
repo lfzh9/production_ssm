@@ -25,7 +25,17 @@ public class TechnologyPlan {
 
     private Date technologyPlanEnd;
 
-    public String getTechnologyPlanId() {
+    @Override
+	public String toString() {
+		return "TechnologyPlan [technologyPlanId=" + technologyPlanId
+				+ ", technologyId=" + technologyId + ", batchAmount="
+				+ batchAmount + ", startPlan=" + startPlan + ", endPlan="
+				+ endPlan + ", commitPlan=" + commitPlan
+				+ ", technologyPlanStart=" + technologyPlanStart
+				+ ", technologyPlanEnd=" + technologyPlanEnd + "]";
+	}
+
+	public String getTechnologyPlanId() {
         return technologyPlanId;
     }
 

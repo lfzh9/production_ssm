@@ -20,7 +20,16 @@ public class DeviceCheck {
 
     private String deviceCheckFaultId;
 
-    public String getDeviceCheckId() {
+    @Override
+	public String toString() {
+		return "DeviceCheck [deviceCheckId=" + deviceCheckId + ", deviceId="
+				+ deviceId + ", deviceCheckEmpId=" + deviceCheckEmpId
+				+ ", deviceCheckDate=" + deviceCheckDate
+				+ ", deviceCheckResult=" + deviceCheckResult
+				+ ", deviceCheckFaultId=" + deviceCheckFaultId + "]";
+	}
+
+	public String getDeviceCheckId() {
         return deviceCheckId;
     }
 

@@ -17,7 +17,15 @@ public class TechnologyRequirement {
 
     private Date reviseTime;
 
-    public String getTechnologyRequirementId() {
+    @Override
+	public String toString() {
+		return "TechnologyRequirement [technologyRequirementId="
+				+ technologyRequirementId + ", technologyId=" + technologyId
+				+ ", requirement=" + requirement + ", addTime=" + addTime
+				+ ", reviseTime=" + reviseTime + "]";
+	}
+
+	public String getTechnologyRequirementId() {
         return technologyRequirementId;
     }
 

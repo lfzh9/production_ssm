@@ -42,7 +42,18 @@ public class ProcessCountCheck {
     @Size(max=5000, message="{note.length.error}")
     private String note;
 
-    public String getpCountCheckId() {
+    @Override
+	public String toString() {
+		return "ProcessCountCheck [pCountCheckId=" + pCountCheckId
+				+ ", processId=" + processId + ", checkItem=" + checkItem
+				+ ", sample=" + sample + ", checkNumber=" + checkNumber
+				+ ", unqualify=" + unqualify + ", qualify=" + qualify
+				+ ", cdate=" + cdate + ", measureData=" + measureData
+				+ ", empId=" + empId + ", result=" + result + ", note=" + note
+				+ "]";
+	}
+
+	public String getpCountCheckId() {
         return pCountCheckId;
     }
 

@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.megagao.production.ssm.common.CommonController;
 import com.megagao.production.ssm.domain.FinalMeasuretCheck;
 import com.megagao.production.ssm.domain.customize.CustomResult;
 import com.megagao.production.ssm.domain.customize.EUDataGridResult;
@@ -19,7 +20,7 @@ import com.megagao.production.ssm.service.MeasureService;
 
 @Controller
 @RequestMapping("/measure")
-public class FMeasurementController {
+public class FMeasurementController extends CommonController{
 
 	@Autowired
 	private MeasureService measureService;
@@ -82,6 +83,7 @@ public class FMeasurementController {
 		if(measureService.get(finalMeasuretCheck.getfMeasureCheckId()) != null){
 			result = new CustomResult(0, "该成品计量质检编号已经存在，请更换！", null);
 		}else{
+			log("成品计量质检：添加数据： {"+finalMeasuretCheck+"}");
 			result = measureService.insert(finalMeasuretCheck);
 		}
 		return result;
@@ -95,6 +97,7 @@ public class FMeasurementController {
 			FieldError fieldError = bindingResult.getFieldError();
 			return CustomResult.build(100, fieldError.getDefaultMessage());
 		}
+		log("成品计量质检：修改数据： {"+finalMeasuretCheck+"}");
 		return measureService.updateAll(finalMeasuretCheck);
 	}
 	
@@ -113,6 +116,7 @@ public class FMeasurementController {
 	@ResponseBody
 	private CustomResult deleteBatch(String[] ids) throws Exception {
 		CustomResult result = measureService.deleteBatch(ids);
+		log("成品计量质检：删除数据： {"+ids+"}");
 		return result;
 	}
 
@@ -122,6 +126,7 @@ public class FMeasurementController {
 	public EUDataGridResult searchFMeasureCheckByFMeasureCheckId(Integer page, Integer rows, String searchValue)
 			throws Exception{
 		EUDataGridResult result = measureService.searchFMeasureCheckByFMeasureCheckId(page, rows, searchValue);
+		log("成品计量质检：查询数据： {成品计量质检id"+searchValue+"}");
 		return result;
 	}
 
@@ -131,6 +136,7 @@ public class FMeasurementController {
 	public EUDataGridResult searchFMeasureCheckByOrderId(Integer page, Integer rows, String searchValue)
 			throws Exception{
 		EUDataGridResult result = measureService.searchFMeasureCheckByOrderId(page, rows, searchValue);
+		log("成品计量质检：查询数据： {订单id"+searchValue+"}");
 		return result;
 	}
 }

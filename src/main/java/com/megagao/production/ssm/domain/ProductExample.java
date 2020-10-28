@@ -10,7 +10,13 @@ public class ProductExample {
 
     protected List<Criteria> oredCriteria;
 
-    public ProductExample() {
+    @Override
+	public String toString() {
+		return "ProductExample [orderByClause=" + orderByClause + ", distinct="
+				+ distinct + ", oredCriteria=" + oredCriteria + "]";
+	}
+
+	public ProductExample() {
         oredCriteria = new ArrayList<Criteria>();
     }
 

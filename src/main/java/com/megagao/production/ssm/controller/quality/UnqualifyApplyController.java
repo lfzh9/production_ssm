@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.megagao.production.ssm.common.CommonController;
 import com.megagao.production.ssm.domain.UnqualifyApply;
 import com.megagao.production.ssm.domain.customize.CustomResult;
 import com.megagao.production.ssm.domain.customize.EUDataGridResult;
@@ -17,7 +18,7 @@ import com.megagao.production.ssm.service.UnqualifyService;
 
 @Controller
 @RequestMapping("/unqualify")
-public class UnqualifyApplyController {
+public class UnqualifyApplyController extends CommonController{
 
 	@Autowired
 	private UnqualifyService unqualifyService;
@@ -55,6 +56,7 @@ public class UnqualifyApplyController {
 		if(unqualifyService.get(unqualifyApply.getUnqualifyApplyId()) != null){
 			result = new CustomResult(0, "该不合格品申请编号已经存在，请更换！", null);
 		}else{
+			log("不合格申请：添加数据： {"+unqualifyApply+"}");
 			result = unqualifyService.insert(unqualifyApply);
 		}
 		return result;
@@ -67,6 +69,7 @@ public class UnqualifyApplyController {
 			FieldError fieldError = bindingResult.getFieldError();
 			return CustomResult.build(100, fieldError.getDefaultMessage());
 		}
+		log("不合格申请：修改数据： {"+unqualifyApply+"}");
 		return unqualifyService.updateAll(unqualifyApply);
 	}
 	
@@ -92,6 +95,7 @@ public class UnqualifyApplyController {
 	@ResponseBody
 	private CustomResult deleteBatch(String[] ids) throws Exception {
 		CustomResult result = unqualifyService.deleteBatch(ids);
+		log("不合格申请：删除数据： {"+ids+"}");
 		return result;
 	}
 
@@ -101,6 +105,7 @@ public class UnqualifyApplyController {
 	public EUDataGridResult searchUnqualifyByUnqualifyId(Integer page, Integer rows, String searchValue) 
 			throws Exception{
 		EUDataGridResult result = unqualifyService.searchUnqualifyByUnqualifyId(page, rows, searchValue);
+		log("不合格申请：查询数据： {不合格品id :"+searchValue+"}");
 		return result;
 	}
 
@@ -110,6 +115,7 @@ public class UnqualifyApplyController {
 	public EUDataGridResult searchUnqualifyByProductName(Integer page, Integer rows, String searchValue) 
 			throws Exception{
 		EUDataGridResult result = unqualifyService.searchUnqualifyByProductName(page, rows, searchValue);
+		log("不合格申请：查询数据： {产品名称"+searchValue+"}");
 		return result;
 	}
 	

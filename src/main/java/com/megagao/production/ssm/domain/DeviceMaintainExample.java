@@ -12,7 +12,14 @@ public class DeviceMaintainExample {
 
     protected List<Criteria> oredCriteria;
 
-    public DeviceMaintainExample() {
+    @Override
+	public String toString() {
+		return "DeviceMaintainExample [orderByClause=" + orderByClause
+				+ ", distinct=" + distinct + ", oredCriteria=" + oredCriteria
+				+ "]";
+	}
+
+	public DeviceMaintainExample() {
         oredCriteria = new ArrayList<Criteria>();
     }
 

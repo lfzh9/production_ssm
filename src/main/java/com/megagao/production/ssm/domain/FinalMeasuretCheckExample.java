@@ -11,7 +11,14 @@ public class FinalMeasuretCheckExample {
 
     protected List<Criteria> oredCriteria;
 
-    public FinalMeasuretCheckExample() {
+    @Override
+	public String toString() {
+		return "FinalMeasuretCheckExample [orderByClause=" + orderByClause
+				+ ", distinct=" + distinct + ", oredCriteria=" + oredCriteria
+				+ "]";
+	}
+
+	public FinalMeasuretCheckExample() {
         oredCriteria = new ArrayList<Criteria>();
     }
 

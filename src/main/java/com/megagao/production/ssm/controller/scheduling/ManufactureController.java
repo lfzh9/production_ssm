@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.megagao.production.ssm.common.CommonController;
 import com.megagao.production.ssm.domain.Manufacture;
 import com.megagao.production.ssm.domain.customize.CustomResult;
 import com.megagao.production.ssm.domain.customize.EUDataGridResult;
@@ -21,7 +22,7 @@ import com.megagao.production.ssm.service.ManufactureService;
 
 @Controller
 @RequestMapping("/manufacture")
-public class ManufactureController {
+public class ManufactureController extends CommonController{
 
 	@Autowired
 	private ManufactureService manufactureService;
@@ -72,6 +73,7 @@ public class ManufactureController {
 		if(manufactureService.get(manufacture.getManufactureSn()) != null){
 			result = new CustomResult(0, "该生产批号已经存在，请更换生产批号！", null);
 		}else{
+			log("添加生产批号：{"+manufacture+"}");
 			result = manufactureService.insert(manufacture);
 		}
 		return result;
@@ -94,6 +96,7 @@ public class ManufactureController {
 			FieldError fieldError = bindingResult.getFieldError();
 			return CustomResult.build(100, fieldError.getDefaultMessage());
 		}
+		log("修改生产批号：{"+manufacture+"}");
 		return manufactureService.updateAll(manufacture);
 	}
 	
@@ -109,6 +112,7 @@ public class ManufactureController {
 	private CustomResult deleteBatch(String[] ids) throws Exception {
 		System.out.println(ids);
 		CustomResult result = manufactureService.deleteBatch(ids);
+		log("删除生产批号：{"+ids+"}");
 		return result;
 	}
 	
@@ -118,6 +122,7 @@ public class ManufactureController {
 	public EUDataGridResult searchManufactureByManufactureSn(Integer page, Integer rows, String searchValue)
 			throws Exception{
 		EUDataGridResult result = manufactureService.searchManufactureByManufactureSn(page, rows, searchValue);
+		log("查询生产批号：{生产流水号"+searchValue+"}");
 		return result;
 	}
 	
@@ -127,6 +132,7 @@ public class ManufactureController {
 	public EUDataGridResult searchManufactureByManufactureOrderId(Integer page, Integer rows, String searchValue) 
 			throws Exception{
 		EUDataGridResult result = manufactureService.searchManufactureByManufactureOrderId(page, rows, searchValue);
+		log("查询生产批号：{订单id:"+searchValue+"}");
 		return result;
 	}
 	
@@ -137,6 +143,7 @@ public class ManufactureController {
 			, String searchValue) throws Exception{
 		EUDataGridResult result = manufactureService.searchManufactureByManufactureTechnologyName(page, 
 				rows, searchValue);
+		log("查询生产批号：{工艺名称："+searchValue+"}");
 		return result;
 	}
 }

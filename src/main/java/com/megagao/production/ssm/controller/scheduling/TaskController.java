@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.megagao.production.ssm.common.CommonController;
 import com.megagao.production.ssm.domain.Task;
 import com.megagao.production.ssm.domain.customize.CustomResult;
 import com.megagao.production.ssm.domain.customize.EUDataGridResult;
@@ -20,7 +21,7 @@ import com.megagao.production.ssm.service.TaskService;
 
 @Controller
 @RequestMapping("/task")
-public class TaskController {
+public class TaskController extends CommonController{
 
 	@Autowired
 	private TaskService taskService;
@@ -71,6 +72,7 @@ public class TaskController {
 		if(taskService.get(task.getTaskId()) != null){
 			result = new CustomResult(0, "该生产派工编号已经存在，请更换生产派工编号！", null);
 		}else{
+			log("添加生产派工：{"+task+"}");
 			result = taskService.insert(task);
 		}
 		return result;
@@ -93,6 +95,7 @@ public class TaskController {
 			FieldError fieldError = bindingResult.getFieldError();
 			return CustomResult.build(100, fieldError.getDefaultMessage());
 		}
+		log("修改生产派工：{"+task+"}");
 		return taskService.updateAll(task);
 	}
 	
@@ -107,6 +110,7 @@ public class TaskController {
 	@ResponseBody
 	private CustomResult deleteBatch(String[] ids) throws Exception {
 		CustomResult result = taskService.deleteBatch(ids);
+		log("删除生产派工：{"+ids+"}");
 		return result;
 	}
 	
@@ -116,6 +120,7 @@ public class TaskController {
 	public EUDataGridResult searchTaskByTaskId(Integer page, Integer rows, String searchValue) 
 			throws Exception{
 		EUDataGridResult result = taskService.searchTaskByTaskId(page, rows, searchValue);
+		log("查询生产派工：{生产派工id:"+searchValue+"}");
 		return result;
 	}
 	
@@ -124,6 +129,7 @@ public class TaskController {
 	@ResponseBody
 	public EUDataGridResult searchTaskByTaskWorkId(Integer page, Integer rows, String searchValue) throws Exception{
 		EUDataGridResult result = taskService.searchTaskByTaskWorkId(page, rows, searchValue);
+		log("查询生产派工：{作业id:"+searchValue+"}");
 		return result;
 	}
 	
@@ -133,6 +139,7 @@ public class TaskController {
 	public EUDataGridResult searchTaskByTaskManufactureSn(Integer page, Integer rows, String searchValue) 
 			throws Exception{
 		EUDataGridResult result = taskService.searchTaskByTaskManufactureSn(page, rows, searchValue);
+		log("查询生产派工：{生产计划id:"+searchValue+"}");
 		return result;
 	}
 }

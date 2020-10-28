@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.megagao.production.ssm.common.CommonController;
 import com.megagao.production.ssm.domain.Material;
 import com.megagao.production.ssm.domain.customize.CustomResult;
 import com.megagao.production.ssm.domain.customize.EUDataGridResult;
@@ -21,7 +22,7 @@ import com.megagao.production.ssm.service.MaterialService;
 
 @Controller
 @RequestMapping("/material")
-public class MaterialController {
+public class MaterialController extends CommonController{
 
 	@Autowired
 	private MaterialService materialService;
@@ -72,6 +73,7 @@ public class MaterialController {
 		if(materialService.get(material.getMaterialId()) != null){
 			result = new CustomResult(0, "该物料编号已经存在，请更换物料编号！", null);
 		}else{
+			log("物料：添加数据： {"+material+"}");
 			result = materialService.insert(material);
 		}
 		return result;
@@ -94,6 +96,7 @@ public class MaterialController {
 			FieldError fieldError = bindingResult.getFieldError();
 			return CustomResult.build(100, fieldError.getDefaultMessage());
 		}
+		log("物料：修改数据： {"+material+"}");
 		return materialService.updateAll(material);
 	}
 	
@@ -118,6 +121,7 @@ public class MaterialController {
 	@ResponseBody
 	private CustomResult deleteBatch(String[] ids) throws Exception {
 		CustomResult result = materialService.deleteBatch(ids);
+		log("物料：删除数据： {"+ids+"}");
 		return result;
 	}
 	
@@ -127,6 +131,7 @@ public class MaterialController {
 	public EUDataGridResult searchMaterialByMaterialId(Integer page, Integer rows, String searchValue) 
 			throws Exception{
 		EUDataGridResult result = materialService.searchMaterialByMaterialId(page, rows, searchValue);
+		log("物料：删除数据： {物料id："+searchValue+"}");
 		return result;
 	}
 	
@@ -136,6 +141,7 @@ public class MaterialController {
 	public EUDataGridResult searchMaterialByMaterialType(Integer page, Integer rows, String searchValue) 
 			throws Exception{
 		EUDataGridResult result = materialService.searchMaterialByMaterialType(page, rows, searchValue);
+		log("物料：删除数据： {物料类型："+searchValue+"}");
 		return result;
 	}
 }

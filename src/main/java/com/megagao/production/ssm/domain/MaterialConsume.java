@@ -28,7 +28,15 @@ public class MaterialConsume {
     @Size(max=5000, message="{note.length.error}")
     private String note;
 
-    public String getConsumeId() {
+    @Override
+	public String toString() {
+		return "MaterialConsume [consumeId=" + consumeId + ", workId=" + workId
+				+ ", materialId=" + materialId + ", consumeAmount="
+				+ consumeAmount + ", consumeDate=" + consumeDate + ", sender="
+				+ sender + ", receiver=" + receiver + ", note=" + note + "]";
+	}
+
+	public String getConsumeId() {
         return consumeId;
     }
 

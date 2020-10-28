@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.megagao.production.ssm.common.CommonController;
 import com.megagao.production.ssm.domain.ProcessCountCheck;
 import com.megagao.production.ssm.domain.customize.CustomResult;
 import com.megagao.production.ssm.domain.customize.EUDataGridResult;
@@ -20,7 +21,7 @@ import com.megagao.production.ssm.service.PCountCheckService;
 
 @Controller
 @RequestMapping("/p_count_check")
-public class PCountCheckController {
+public class PCountCheckController extends CommonController{
 
 	@Autowired
 	private PCountCheckService pCountCheckService;
@@ -81,6 +82,7 @@ public class PCountCheckController {
 			return CustomResult.build(100, fieldError.getDefaultMessage());
 		}
 		result = pCountCheckService.insert(processCountCheck);
+		log("添加数据： {"+processCountCheck+"}");
 		return result;
 	}
 	
@@ -99,6 +101,7 @@ public class PCountCheckController {
 			FieldError fieldError = bindingResult.getFieldError();
 			return CustomResult.build(100, fieldError.getDefaultMessage());
 		}
+		log("修改数据： {"+processCountCheck+"}");
 		return pCountCheckService.updateAll(processCountCheck);
 	}
 	
@@ -122,8 +125,9 @@ public class PCountCheckController {
 	@RequestMapping(value="/delete_batch")
 	@ResponseBody
 	private CustomResult deleteBatch(String[] ids) throws Exception {
-		System.out.println(ids);
 		CustomResult result = pCountCheckService.deleteBatch(ids);
+		log("删除数据： {"+ids+"}");
+
 		return result;
 	}
 	
@@ -139,6 +143,7 @@ public class PCountCheckController {
 	public EUDataGridResult searchpCountCheckBypCountCheckId(Integer page, Integer rows, String searchValue)
 			throws Exception{
 		EUDataGridResult result = pCountCheckService.searchPCountCheckByPCountCheckId(page, rows, searchValue);
+		log("查询数据： {工序计数质检id"+searchValue+"}");
 		return result;
 	}
 }

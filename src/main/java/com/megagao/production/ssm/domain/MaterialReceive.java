@@ -24,7 +24,15 @@ public class MaterialReceive {
     @Size(max=5000, message="{note.length.error}")
     private String note;
 
-    public String getReceiveId() {
+    @Override
+	public String toString() {
+		return "MaterialReceive [receiveId=" + receiveId + ", materialId="
+				+ materialId + ", amount=" + amount + ", receiveDate="
+				+ receiveDate + ", sender=" + sender + ", receiver=" + receiver
+				+ ", note=" + note + "]";
+	}
+
+	public String getReceiveId() {
         return receiveId;
     }
 

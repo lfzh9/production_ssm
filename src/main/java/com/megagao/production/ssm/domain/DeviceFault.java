@@ -21,7 +21,16 @@ public class DeviceFault {
     @Size(max=500, message="维修方式长度请限制在500个字符内")
     private String deviceFaultMaintenance;
 
-    public String getDeviceFaultId() {
+    @Override
+	public String toString() {
+		return "DeviceFault [deviceFaultId=" + deviceFaultId + ", deviceId="
+				+ deviceId + ", deviceFaultCause=" + deviceFaultCause
+				+ ", deviceFaultDetail=" + deviceFaultDetail
+				+ ", deviceFaultDate=" + deviceFaultDate
+				+ ", deviceFaultMaintenance=" + deviceFaultMaintenance + "]";
+	}
+
+	public String getDeviceFaultId() {
         return deviceFaultId;
     }
 

@@ -40,7 +40,18 @@ public class Employee {
 
     private String departmentId;
 
-    public String getEmpId() {
+    @Override
+	public String toString() {
+		return "Employee [empId=" + empId + ", empName=" + empName + ", sex="
+				+ sex + ", idCode=" + idCode + ", birthday=" + birthday
+				+ ", joinDate=" + joinDate + ", status=" + status
+				+ ", education=" + education + ", degree=" + degree
+				+ ", major=" + major + ", graduateSchool=" + graduateSchool
+				+ ", educationForm=" + educationForm + ", departmentId="
+				+ departmentId + "]";
+	}
+
+	public String getEmpId() {
         return empId;
     }
 

@@ -9,7 +9,14 @@ public class ProcessMeasureCheckExample {
 
     protected boolean distinct;
 
-    protected List<Criteria> oredCriteria;
+    @Override
+	public String toString() {
+		return "ProcessMeasureCheckExample [orderByClause=" + orderByClause
+				+ ", distinct=" + distinct + ", oredCriteria=" + oredCriteria
+				+ "]";
+	}
+
+	protected List<Criteria> oredCriteria;
 
     public ProcessMeasureCheckExample() {
         oredCriteria = new ArrayList<Criteria>();

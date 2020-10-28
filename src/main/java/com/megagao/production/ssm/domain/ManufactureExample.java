@@ -11,7 +11,14 @@ public class ManufactureExample {
 
     protected List<Criteria> oredCriteria;
 
-    public ManufactureExample() {
+    @Override
+	public String toString() {
+		return "ManufactureExample [orderByClause=" + orderByClause
+				+ ", distinct=" + distinct + ", oredCriteria=" + oredCriteria
+				+ "]";
+	}
+
+	public ManufactureExample() {
         oredCriteria = new ArrayList<Criteria>();
     }
 

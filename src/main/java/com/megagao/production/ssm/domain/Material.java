@@ -21,7 +21,14 @@ public class Material {
     @Size(max=5000, message="{note.length.error}")
     private String note;
 
-    public String getMaterialId() {
+    @Override
+	public String toString() {
+		return "Material [materialId=" + materialId + ", workId=" + workId
+				+ ", materialType=" + materialType + ", status=" + status
+				+ ", remaining=" + remaining + ", note=" + note + "]";
+	}
+
+	public String getMaterialId() {
         return materialId;
     }
 

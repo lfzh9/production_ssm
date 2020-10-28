@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.megagao.production.ssm.common.CommonController;
 import com.megagao.production.ssm.domain.DeviceType;
 import com.megagao.production.ssm.domain.customize.CustomResult;
 import com.megagao.production.ssm.domain.customize.EUDataGridResult;
@@ -20,7 +21,7 @@ import com.megagao.production.ssm.service.DeviceTypeService;
 
 @Controller
 @RequestMapping("/deviceType")
-public class DeviceTypeController {
+public class DeviceTypeController extends CommonController{
 
 	@Autowired
 	private DeviceTypeService deviceTypeService;
@@ -73,6 +74,7 @@ public class DeviceTypeController {
 		if(deviceTypeService.get(deviceType.getDeviceTypeId()) != null){
 			result = new CustomResult(0, "该设备种类编号已经存在，请更换设备种类编号！", null);
 		}else{
+			log("设备种类：添加数据： {"+deviceType+"}");
 			result = deviceTypeService.insert(deviceType);
 		}
 		return result;
@@ -82,6 +84,7 @@ public class DeviceTypeController {
 	@ResponseBody
 	private CustomResult deleteBatch(String[] ids) throws Exception {
 		CustomResult result = deviceTypeService.deleteBatch(ids);
+		log("设备种类：删除数据： {"+ids+"}");
 		return result;
 	}
 	
@@ -102,6 +105,7 @@ public class DeviceTypeController {
 			FieldError fieldError = bindingResult.getFieldError();
 			return CustomResult.build(100, fieldError.getDefaultMessage());
 		}
+		log("设备种类：修改数据： {"+deviceType+"}");
 		return deviceTypeService.updateAll(deviceType);
 	}
 	
@@ -111,6 +115,7 @@ public class DeviceTypeController {
 	public EUDataGridResult searchDeviceTypeByDeviceTypeId(Integer page, Integer rows, String searchValue) 
 			throws Exception{
 		EUDataGridResult result = deviceTypeService.searchDeviceTypeByDeviceTypeId(page, rows, searchValue);
+		log("设备种类：查询数据： {设备种类编号："+searchValue+"}");
 		return result;
 	}
 	
@@ -120,6 +125,7 @@ public class DeviceTypeController {
 	public EUDataGridResult searchDeviceTypeByDeviceTypeName(Integer page, Integer rows, String searchValue) 
 			throws Exception{
 		EUDataGridResult result = deviceTypeService.searchDeviceTypeByDeviceTypeName(page, rows, searchValue);
+		log("设备种类：查询数据： {设备种类名称："+searchValue+"}");
 		return result;
 	}
 }

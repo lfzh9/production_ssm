@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.megagao.production.ssm.common.CommonController;
 import com.megagao.production.ssm.domain.COrder;
 import com.megagao.production.ssm.domain.customize.CustomResult;
 import com.megagao.production.ssm.domain.customize.EUDataGridResult;
@@ -21,7 +22,7 @@ import com.megagao.production.ssm.service.OrderService;
 
 @Controller
 @RequestMapping("/order")
-public class OrderController {
+public class OrderController extends CommonController{
 
 	@Autowired
 	private OrderService orderService;
@@ -74,6 +75,7 @@ public class OrderController {
 		if(orderService.get(cOrder.getOrderId()) != null){
 			result = new CustomResult(0, "该订单编号已经存在，请更换订单编号！", null);
 		}else{
+			log("添加订单：{"+cOrder+"}");
 			result = orderService.insert(cOrder);
 		}
 		return result;
@@ -96,6 +98,7 @@ public class OrderController {
 			FieldError fieldError = bindingResult.getFieldError();
 			return CustomResult.build(100, fieldError.getDefaultMessage());
 		}
+		log("修改订单：{"+cOrder+"}");
 		return orderService.updateAll(cOrder);
 	}
 	
@@ -120,6 +123,7 @@ public class OrderController {
 	@ResponseBody
 	private CustomResult deleteBatch(String[] ids) throws Exception {
 		CustomResult result = orderService.deleteBatch(ids);
+		log("删除订单：{"+ids+"}");
 		return result;
 	}
 	
@@ -135,6 +139,7 @@ public class OrderController {
 	@ResponseBody
 	public EUDataGridResult searchOrderByOrderId(Integer page, Integer rows, String searchValue) throws Exception{
 		EUDataGridResult result = orderService.searchOrderByOrderId(page, rows, searchValue);
+		log("查询订单：{订单id:"+searchValue+"}");
 		return result;
 	}
 	
@@ -143,6 +148,7 @@ public class OrderController {
 	@ResponseBody
 	public EUDataGridResult searchOrderByOrderCustom(Integer page, Integer rows, String searchValue) throws Exception{
 		EUDataGridResult result = orderService.searchOrderByCustomName(page, rows, searchValue);
+		log("查询订单：{客户名称:"+searchValue+"}");
 		return result;
 	}
 	
@@ -151,6 +157,7 @@ public class OrderController {
 	@ResponseBody
 	public EUDataGridResult searchOrderByProductName(Integer page, Integer rows, String searchValue) throws Exception{
 		EUDataGridResult result = orderService.searchOrderByProductName(page, rows, searchValue);
+		log("查询订单：{产品名称:"+searchValue+"}");
 		return result;
 	}
 }

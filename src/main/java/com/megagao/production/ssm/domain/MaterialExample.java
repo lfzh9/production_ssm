@@ -10,7 +10,14 @@ public class MaterialExample {
 
     protected List<Criteria> oredCriteria;
 
-    public MaterialExample() {
+    @Override
+	public String toString() {
+		return "MaterialExample [orderByClause=" + orderByClause
+				+ ", distinct=" + distinct + ", oredCriteria=" + oredCriteria
+				+ "]";
+	}
+
+	public MaterialExample() {
         oredCriteria = new ArrayList<Criteria>();
     }
 

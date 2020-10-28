@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.megagao.production.ssm.common.CommonController;
 import com.megagao.production.ssm.domain.TechnologyPlan;
 import com.megagao.production.ssm.domain.customize.CustomResult;
 import com.megagao.production.ssm.domain.customize.EUDataGridResult;
@@ -21,7 +22,7 @@ import com.megagao.production.ssm.service.TechnologyPlanService;
 
 @Controller
 @RequestMapping("/technologyPlan")
-public class TechnologyPlanController {
+public class TechnologyPlanController extends CommonController{
 
 	@Autowired
 	private TechnologyPlanService technologyPlanService;
@@ -75,6 +76,7 @@ public class TechnologyPlanController {
 		if(technologyPlanService.get(technologyPlan.getTechnologyPlanId()) != null){
 			result = new CustomResult(0, "该工艺计划编号已经存在，请更换工艺计划编号！", null);
 		}else{
+			log("添加工艺计划：{"+technologyPlan+"}");
 			result = technologyPlanService.insert(technologyPlan);
 		}
 		return result;
@@ -87,6 +89,7 @@ public class TechnologyPlanController {
 			FieldError fieldError = bindingResult.getFieldError();
 			return CustomResult.build(100, fieldError.getDefaultMessage());
 		}
+		log("修改工艺计划：{"+technologyPlan+"}");
 		return technologyPlanService.updateAll(technologyPlan);
 	}
 
@@ -94,6 +97,7 @@ public class TechnologyPlanController {
 	@ResponseBody
 	private CustomResult deleteBatch(String[] ids) throws Exception {
 		CustomResult result = technologyPlanService.deleteBatch(ids);
+		log("删除工艺计划：{"+ids+"}");
 		return result;
 	}
 	
@@ -103,6 +107,7 @@ public class TechnologyPlanController {
 	public EUDataGridResult searchTechnologyPlanByTechnologyPlanId(Integer page, Integer rows, String searchValue) 
 			throws Exception{
 		EUDataGridResult result = technologyPlanService.searchTechnologyPlanByTechnologyPlanId(page, rows, searchValue);
+		log("查询工艺计划：{工艺计划id："+searchValue+"}");
 		return result;
 	}
 	
@@ -112,6 +117,7 @@ public class TechnologyPlanController {
 	public EUDataGridResult searchTechnologyPlanByTechnologyName(Integer page, Integer rows, String searchValue)
 			throws Exception{
 		EUDataGridResult result = technologyPlanService.searchTechnologyPlanByTechnologyName(page, rows, searchValue);
+		log("查询工艺计划：{工艺名称："+searchValue+"}");
 		return result;
 	}
 }

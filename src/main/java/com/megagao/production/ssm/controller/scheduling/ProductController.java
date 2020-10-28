@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.megagao.production.ssm.common.CommonController;
 import com.megagao.production.ssm.domain.Product;
 import com.megagao.production.ssm.domain.customize.CustomResult;
 import com.megagao.production.ssm.domain.customize.EUDataGridResult;
@@ -20,7 +21,7 @@ import com.megagao.production.ssm.service.ProductService;
 
 @Controller
 @RequestMapping("/product")
-public class ProductController {
+public class ProductController extends CommonController{
 
 	@Autowired
 	private ProductService productService;
@@ -71,6 +72,7 @@ public class ProductController {
 		if(productService.get(product.getProductId()) != null){
 			result = new CustomResult(0, "该产品编号已经存在，请更换产品编号！", null);
 		}else{
+			log("添加产品：{"+product+"}");
 			result = productService.insert(product);
 		}
 		return result;
@@ -93,6 +95,7 @@ public class ProductController {
 			FieldError fieldError = bindingResult.getFieldError();
 			return CustomResult.build(100, fieldError.getDefaultMessage());
 		}
+		log("修改产品：{"+product+"}");
 		return productService.updateAll(product);
 	}
 	
@@ -117,6 +120,7 @@ public class ProductController {
 	@ResponseBody
 	private CustomResult deleteBatch(String[] ids) throws Exception {
 		CustomResult result = productService.deleteBatch(ids);
+		log("删除产品：{"+ids+"}");
 		return result;
 	}
 	
@@ -125,6 +129,7 @@ public class ProductController {
 	@ResponseBody
 	public EUDataGridResult searchProductByProductId(Integer page, Integer rows, String searchValue) throws Exception{
 		EUDataGridResult result = productService.searchProductByProductId(page, rows, searchValue);
+		log("查询产品：{产品id:"+searchValue+"}");
 		return result;
 	}
 	
@@ -133,6 +138,7 @@ public class ProductController {
 	@ResponseBody
 	public EUDataGridResult searchProductByProductName(Integer page, Integer rows, String searchValue) throws Exception{
 		EUDataGridResult result = productService.searchProductByProductName(page, rows, searchValue);
+		log("查询产品：{产品名称:"+searchValue+"}");
 		return result;
 	}
 	
@@ -142,6 +148,7 @@ public class ProductController {
 	public EUDataGridResult searchProductByProductType(Integer page, Integer rows, String searchValue) 
 			throws Exception{
 		EUDataGridResult result = productService.searchProductByProductType(page, rows, searchValue);
+		log("查询产品：{产品类型:"+searchValue+"}");
 		return result;
 	}
 }

@@ -12,7 +12,14 @@ public class EmployeeExample {
 
     protected List<Criteria> oredCriteria;
 
-    public EmployeeExample() {
+    @Override
+	public String toString() {
+		return "EmployeeExample [orderByClause=" + orderByClause
+				+ ", distinct=" + distinct + ", oredCriteria=" + oredCriteria
+				+ "]";
+	}
+
+	public EmployeeExample() {
         oredCriteria = new ArrayList<Criteria>();
     }
 

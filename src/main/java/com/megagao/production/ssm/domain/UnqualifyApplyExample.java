@@ -11,7 +11,14 @@ public class UnqualifyApplyExample {
 
     protected List<Criteria> oredCriteria;
 
-    public UnqualifyApplyExample() {
+    @Override
+	public String toString() {
+		return "UnqualifyApplyExample [orderByClause=" + orderByClause
+				+ ", distinct=" + distinct + ", oredCriteria=" + oredCriteria
+				+ "]";
+	}
+
+	public UnqualifyApplyExample() {
         oredCriteria = new ArrayList<Criteria>();
     }
 

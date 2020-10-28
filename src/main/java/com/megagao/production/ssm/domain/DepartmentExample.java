@@ -10,7 +10,14 @@ public class DepartmentExample {
 
     protected List<Criteria> oredCriteria;
 
-    public DepartmentExample() {
+    @Override
+	public String toString() {
+		return "DepartmentExample [orderByClause=" + orderByClause
+				+ ", distinct=" + distinct + ", oredCriteria=" + oredCriteria
+				+ "]";
+	}
+
+	public DepartmentExample() {
         oredCriteria = new ArrayList<Criteria>();
     }
 

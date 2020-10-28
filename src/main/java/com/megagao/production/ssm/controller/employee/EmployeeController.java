@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.megagao.production.ssm.common.CommonController;
 import com.megagao.production.ssm.domain.Employee;
 import com.megagao.production.ssm.domain.customize.CustomResult;
 import com.megagao.production.ssm.domain.customize.EUDataGridResult;
@@ -21,7 +22,7 @@ import com.megagao.production.ssm.service.EmployeeService;
 
 @Controller
 @RequestMapping("/employee")
-public class EmployeeController {
+public class EmployeeController extends CommonController{
 
 	@Autowired
 	private EmployeeService employeeService;
@@ -72,6 +73,7 @@ public class EmployeeController {
 		if(employeeService.get(employee.getEmpId()) != null){
 			result = new CustomResult(0, "该员工编号已经存在，请更换员工编号！", null);
 		}else{
+			log("员工编号：添加数据： {"+employee+"}");
 			result = employeeService.insert(employee);
 		}
 		return result;
@@ -94,6 +96,7 @@ public class EmployeeController {
 			FieldError fieldError = bindingResult.getFieldError();
 			return CustomResult.build(100, fieldError.getDefaultMessage());
 		}
+		log("员工编号：修改数据： {"+employee+"}");
 		return employeeService.updateAll(employee);
 	}
 	
@@ -108,6 +111,7 @@ public class EmployeeController {
 	@ResponseBody
 	private CustomResult deleteBatch(String[] ids) throws Exception {
 		CustomResult result = employeeService.deleteBatch(ids);
+		log("员工编号：删除数据： {"+ids+"}");
 		return result;
 	}
 	
@@ -117,6 +121,7 @@ public class EmployeeController {
 	public EUDataGridResult searchEmployeeByEmployeeId(Integer page, Integer rows, String searchValue)
 			throws Exception{
 		EUDataGridResult result = employeeService.searchEmployeeByEmployeeId(page, rows, searchValue);
+		log("员工编号：查询数据： {员工id："+searchValue+"}");
 		return result;
 	}
 	
@@ -126,6 +131,7 @@ public class EmployeeController {
 	public EUDataGridResult searchEmployeeByEmployeeName(Integer page, Integer rows, String searchValue)
 			throws Exception{
 		EUDataGridResult result = employeeService.searchEmployeeByEmployeeName(page, rows, searchValue);
+		log("员工编号：查询数据： {员工姓名："+searchValue+"}");
 		return result;
 	}
 	
@@ -135,6 +141,7 @@ public class EmployeeController {
 	public EUDataGridResult searchEmployeeByDepartmentName(Integer page, Integer rows, String searchValue) 
 			throws Exception{
 		EUDataGridResult result = employeeService.searchEmployeeByDepartmentName(page, rows, searchValue);
+		log("员工编号：查询数据： {员工名称："+searchValue+"}");
 		return result;
 	}
 }

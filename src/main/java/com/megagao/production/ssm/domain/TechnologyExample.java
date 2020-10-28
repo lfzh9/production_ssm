@@ -11,7 +11,14 @@ public class TechnologyExample {
 
     protected List<Criteria> oredCriteria;
 
-    public TechnologyExample() {
+    @Override
+	public String toString() {
+		return "TechnologyExample [orderByClause=" + orderByClause
+				+ ", distinct=" + distinct + ", oredCriteria=" + oredCriteria
+				+ "]";
+	}
+
+	public TechnologyExample() {
         oredCriteria = new ArrayList<Criteria>();
     }
 

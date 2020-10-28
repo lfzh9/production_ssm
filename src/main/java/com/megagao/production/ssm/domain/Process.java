@@ -16,7 +16,14 @@ public class Process {
 	@Max(value=999999999, message="单件定额工时不能超过999999999")
     private Integer quota;
 
-    public String getProcessId() {
+    @Override
+	public String toString() {
+		return "Process [processId=" + processId + ", technologyPlanId="
+				+ technologyPlanId + ", sequence=" + sequence + ", quota="
+				+ quota + "]";
+	}
+
+	public String getProcessId() {
         return processId;
     }
 

@@ -27,7 +27,16 @@ public class FinalMeasuretCheck {
     @Size(max=5000, message="{note.length.error}")
     private String note;
 
-    public String getfMeasureCheckId() {
+    @Override
+	public String toString() {
+		return "FinalMeasuretCheck [fMeasureCheckId=" + fMeasureCheckId
+				+ ", orderId=" + orderId + ", checkItem=" + checkItem
+				+ ", cdate=" + cdate + ", measureData=" + measureData
+				+ ", empId=" + empId + ", result=" + result + ", note=" + note
+				+ "]";
+	}
+
+	public String getfMeasureCheckId() {
         return fMeasureCheckId;
     }
 

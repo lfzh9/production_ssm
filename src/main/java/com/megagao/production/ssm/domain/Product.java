@@ -20,7 +20,14 @@ public class Product {
 
     private Integer status;
 
-    public String getProductId() {
+    @Override
+	public String toString() {
+		return "Product [productId=" + productId + ", productName="
+				+ productName + ", productType=" + productType + ", image="
+				+ image + ", note=" + note + ", status=" + status + "]";
+	}
+
+	public String getProductId() {
         return productId;
     }
 

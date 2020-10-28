@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.megagao.production.ssm.common.CommonController;
 import com.megagao.production.ssm.domain.ProcessMeasureCheck;
 import com.megagao.production.ssm.domain.customize.CustomResult;
 import com.megagao.production.ssm.domain.customize.EUDataGridResult;
@@ -19,7 +20,7 @@ import com.megagao.production.ssm.service.PMeasureCheckService;
 
 @Controller
 @RequestMapping("/p_measure_check")
-public class PMeasureCheckController {
+public class PMeasureCheckController extends CommonController{
 
 	@Autowired
 	private PMeasureCheckService pMeasureCheckService;
@@ -85,6 +86,7 @@ public class PMeasureCheckController {
 			return CustomResult.build(100, fieldError.getDefaultMessage());
 		}
 		result = pMeasureCheckService.insert(processMeasureCheck);
+		log("添加数据： {"+processMeasureCheck+"}");
 		return result;
 	}
 	
@@ -96,6 +98,7 @@ public class PMeasureCheckController {
 			FieldError fieldError = bindingResult.getFieldError();
 			return CustomResult.build(100, fieldError.getDefaultMessage());
 		}
+		log("修改数据： {"+processMeasureCheck+"}");
 		return pMeasureCheckService.updateAll(processMeasureCheck);
 	}
 	
@@ -115,6 +118,7 @@ public class PMeasureCheckController {
 	private CustomResult deleteBatch(String[] ids) throws Exception {
 		System.out.println(ids);
 		CustomResult result = pMeasureCheckService.deleteBatch(ids);
+		log("删除数据： {"+ids+"}");
 		return result;
 	}
 
@@ -124,6 +128,7 @@ public class PMeasureCheckController {
 	public EUDataGridResult searchOrderByOrderId(Integer page, Integer rows, String searchValue) throws Exception{
 		EUDataGridResult result = pMeasureCheckService
 				.searchPMeasureCheckByPMeasureCheckId(page, rows, searchValue);
+		log("查询数据： {工序计数质检id"+searchValue+"}");
 		return result;
 	}
 }

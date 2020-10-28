@@ -11,7 +11,7 @@
 			<th data-options="field:'ck',checkbox:true"></th>
 			<th data-options="field:'id',align:'center',width:100">编号</th>
 			<th data-options="field:'date',align:'center',width:100">操作时间</th>
-			<th data-options="field:'desc',align:'center',width:100">操作描述</th>
+			<th data-options="field:'desc',align:'center',width:200">操作描述</th>
 			<th data-options="field:'name',align:'center',width:100">操作用户</th>
 			</tr>
     </thead>

@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.megagao.production.ssm.common.CommonController;
 import com.megagao.production.ssm.domain.Custom;
 import com.megagao.production.ssm.domain.customize.CustomResult;
 import com.megagao.production.ssm.domain.customize.EUDataGridResult;
@@ -20,7 +21,7 @@ import com.megagao.production.ssm.service.CustomService;
 
 @Controller
 @RequestMapping("/custom")
-public class CustomController {
+public class CustomController extends CommonController{
 
 	@Autowired
 	private CustomService customService;
@@ -72,6 +73,7 @@ public class CustomController {
 		if(customService.get(custom.getCustomId()) != null){
 			result = new CustomResult(0, "该客户编号已经存在，请更换客户编号！", null);
 		}else{
+			log("客户：添加数据：{"+custom+"}");
 			result = customService.insert(custom);
 		}
 		return result;
@@ -94,6 +96,7 @@ public class CustomController {
 			FieldError fieldError = bindingResult.getFieldError();
 			return CustomResult.build(100, fieldError.getDefaultMessage());
 		}
+		log("客户：修改数据：{"+custom+"}");
 		return customService.updateAll(custom);
 	}
 	
@@ -118,6 +121,7 @@ public class CustomController {
 	@ResponseBody
 	private CustomResult deleteBatch(String[] ids) throws Exception {
 		CustomResult result = customService.deleteBatch(ids);
+		log("客户：删除数据：{"+ids+"}");
 		return result;
 	}
 	
@@ -134,6 +138,7 @@ public class CustomController {
 	public EUDataGridResult searchCustomByCustomId(Integer page, Integer rows, String searchValue)
 			throws Exception{
 		EUDataGridResult result = customService.searchCustomByCustomId(page, rows, searchValue);
+		log("查询客户：{客户id："+searchValue+"}");
 		return result;
 	}
 	
@@ -143,6 +148,7 @@ public class CustomController {
 	public EUDataGridResult searchCustomByCustomName(Integer page, Integer rows, String searchValue) 
 			throws Exception{
 		EUDataGridResult result = customService.searchCustomByCustomName(page, rows, searchValue);
+		log("查询客户：{客户名："+searchValue+"}");
 		return result;
 	}
 	

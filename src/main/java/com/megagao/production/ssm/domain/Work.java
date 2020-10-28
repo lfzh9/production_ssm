@@ -22,7 +22,14 @@ public class Work {
 
     private Integer rating;
 
-    public String getWorkId() {
+    @Override
+	public String toString() {
+		return "Work [workId=" + workId + ", processNumber=" + processNumber
+				+ ", productId=" + productId + ", processId=" + processId
+				+ ", deviceId=" + deviceId + ", rating=" + rating + "]";
+	}
+
+	public String getWorkId() {
         return workId;
     }
 

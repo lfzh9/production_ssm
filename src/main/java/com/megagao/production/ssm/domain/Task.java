@@ -11,7 +11,14 @@ public class Task {
 
     private Long workingHours;
 
-    public String getTaskId() {
+    @Override
+	public String toString() {
+		return "Task [taskId=" + taskId + ", manufactureSn=" + manufactureSn
+				+ ", workId=" + workId + ", taskQuantity=" + taskQuantity
+				+ ", workingHours=" + workingHours + "]";
+	}
+
+	public String getTaskId() {
         return taskId;
     }
 

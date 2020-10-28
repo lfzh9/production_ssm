@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.megagao.production.ssm.common.CommonController;
 import com.megagao.production.ssm.domain.Work;
 import com.megagao.production.ssm.domain.customize.CustomResult;
 import com.megagao.production.ssm.domain.customize.EUDataGridResult;
@@ -21,7 +22,7 @@ import com.megagao.production.ssm.service.WorkService;
 
 @Controller
 @RequestMapping("/work")
-public class WorkController {
+public class WorkController extends CommonController{
 	
 	@Autowired
 	private WorkService workService;
@@ -72,6 +73,7 @@ public class WorkController {
 		if(workService.get(work.getWorkId()) != null){
 			result = new CustomResult(0, "该作业编号已经存在，请更换作业编号！", null);
 		}else{
+			log("添加作业：{"+work+"}");
 			result = workService.insert(work);
 		}
 		return result;
@@ -94,6 +96,7 @@ public class WorkController {
 			FieldError fieldError = bindingResult.getFieldError();
 			return CustomResult.build(100, fieldError.getDefaultMessage());
 		}
+		log("修改作业：{"+work+"}");
 		return workService.updateAll(work);
 	}
 	
@@ -108,6 +111,7 @@ public class WorkController {
 	@ResponseBody
 	private CustomResult deleteBatch(String[] ids) throws Exception {
 		CustomResult result = workService.deleteBatch(ids);
+		log("删除作业：{"+ids+"}");
 		return result;
 	}
 	
@@ -116,6 +120,7 @@ public class WorkController {
 	@ResponseBody
 	public EUDataGridResult searchWorkByWorkId(Integer page, Integer rows, String searchValue) throws Exception{
 		EUDataGridResult result = workService.searchWorkByWorkId(page, rows, searchValue);
+		log("添加作业：{作业id:"+searchValue+"}");
 		return result;
 	}
 	
@@ -124,6 +129,7 @@ public class WorkController {
 	@ResponseBody
 	public EUDataGridResult searchWorkByWorkProduct(Integer page, Integer rows, String searchValue) throws Exception{
 		EUDataGridResult result = workService.searchWorkByWorkProduct(page, rows, searchValue);
+		log("添加作业：{产品名称:"+searchValue+"}");
 		return result;
 	}
 	
@@ -132,6 +138,7 @@ public class WorkController {
 	@ResponseBody
 	public EUDataGridResult searchWorkByWorkDevice(Integer page, Integer rows, String searchValue) throws Exception{
 		EUDataGridResult result = workService.searchWorkByWorkDevice(page, rows, searchValue);
+		log("添加作业：{设备id:"+searchValue+"}");
 		return result;
 	}
 	
@@ -140,6 +147,7 @@ public class WorkController {
 	@ResponseBody
 	public EUDataGridResult searchWorkByWorkProcess(Integer page, Integer rows, String searchValue) throws Exception{
 		EUDataGridResult result = workService.searchWorkByWorkProcess(page, rows, searchValue);
+		log("添加作业：{工序id:"+searchValue+"}");
 		return result;
 	}
 }

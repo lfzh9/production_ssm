@@ -10,7 +10,13 @@ public class TaskExample {
 
     protected List<Criteria> oredCriteria;
 
-    public TaskExample() {
+    @Override
+	public String toString() {
+		return "TaskExample [orderByClause=" + orderByClause + ", distinct="
+				+ distinct + ", oredCriteria=" + oredCriteria + "]";
+	}
+
+	public TaskExample() {
         oredCriteria = new ArrayList<Criteria>();
     }
 

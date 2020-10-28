@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.megagao.production.ssm.common.CommonController;
 import com.megagao.production.ssm.domain.LoginLog;
 import com.megagao.production.ssm.domain.customize.CustomResult;
 import com.megagao.production.ssm.domain.customize.EUDataGridResult;
@@ -32,7 +33,8 @@ import com.megagao.production.ssm.util.CollectionsFactory;
   * @author  megagao
   */
 @Controller
-public class LoginController {
+public class LoginController extends CommonController{
+	public static String a;
 	@Autowired
 	private LoginLogService loginLogService;
 	
@@ -62,6 +64,7 @@ public class LoginController {
 	@ResponseBody
 	private CustomResult deleteBatch(int[] ids) throws Exception {
 		CustomResult result = loginLogService.deleteBatch(ids);
+		log("删除登录日志：{id:"+ids+"}");
 		return result;
 	}
 	
@@ -72,21 +75,24 @@ public class LoginController {
 	@ResponseBody
 	public EUDataGridResult searchLoginLogById(Integer page, Integer rows, int searchValue) throws Exception{
 		EUDataGridResult result = loginLogService.searchLoginLogById(page, rows, searchValue);
+		log("查询登录日志：{id:"+searchValue+"}");
 		return result;
 	}
-	//根据订单id查找
+	//根据日期查找
 	@RequestMapping("/loginLog/search_loginLog_by_date")
 	@ResponseBody
 	public EUDataGridResult searchLoginLogByDate(Integer page, Integer rows, String searchValue) throws Exception{
 		EUDataGridResult result = loginLogService.searchLoginLogByDate(page, rows, searchValue);
+		log("查询登录日志：{日期:"+searchValue+"}");
 		return result;
 	}
-	//根据订单id查找
+	//根据登录用户查找
 	@RequestMapping("/loginLog/search_loginLog_by_name")
 	@ResponseBody
 	public EUDataGridResult searchLoginLogByName(Integer page, Integer rows, String searchValue) throws Exception{
 		searchValue = new String(searchValue.getBytes("iso8859-1"),"utf-8"); 
 		EUDataGridResult result = loginLogService.searchLoginLogByName(page, rows, searchValue);
+		log("查询登录日志：{登录用户:"+searchValue+"}");
 		return result;
 	}
 	
@@ -133,6 +139,8 @@ public class LoginController {
 	            loginLog.setIp(request.getRemoteAddr());
 	            loginLog.setName(username);
 	            loginLogService.insert(loginLog);
+	            
+	            a=username;
 	            
 	        }catch(UnknownAccountException ex){
 	        	map.put("msg", "account_error");

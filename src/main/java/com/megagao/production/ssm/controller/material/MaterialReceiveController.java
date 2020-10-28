@@ -11,13 +11,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.megagao.production.ssm.common.CommonController;
 import com.megagao.production.ssm.domain.MaterialReceive;
 import com.megagao.production.ssm.domain.customize.CustomResult;
 import com.megagao.production.ssm.domain.customize.EUDataGridResult;
 import com.megagao.production.ssm.service.MaterialReceiveService;
 @Controller
 @RequestMapping("/materialReceive")
-public class MaterialReceiveController {
+public class MaterialReceiveController extends CommonController{
 
 	@Autowired
 	private MaterialReceiveService materialReceiveService;
@@ -69,6 +70,7 @@ public class MaterialReceiveController {
 		if(materialReceiveService.get(materialReceive.getReceiveId()) != null){
 			result = new CustomResult(0, "该产品编号已经存在，请更换产品编号！", null);
 		}else{
+			log("产品：添加数据： {"+materialReceive+"}");
 			result = materialReceiveService.insert(materialReceive);
 		}
 		return result;
@@ -93,6 +95,7 @@ public class MaterialReceiveController {
 			FieldError fieldError = bindingResult.getFieldError();
 			return CustomResult.build(100, fieldError.getDefaultMessage());
 		}
+		log("产品：添加数据： {"+materialReceive+"}");
 		return materialReceiveService.updateAll(materialReceive);
 	}
 	
@@ -118,6 +121,7 @@ public class MaterialReceiveController {
 	@ResponseBody
 	private CustomResult deleteBatch(String[] ids) throws Exception {
 		CustomResult result = materialReceiveService.deleteBatch(ids);
+		log("产品：删除数据： {"+ids+"}");
 		return result;
 	}
 	
@@ -127,6 +131,7 @@ public class MaterialReceiveController {
 	public EUDataGridResult searchMaterialReceiveByReceiveId(Integer page, Integer rows, String searchValue)
 			throws Exception{
 		EUDataGridResult result = materialReceiveService.searchMaterialReceiveByReceiveId(page, rows, searchValue);
+		log("产品：查询数据： {物料接受id："+searchValue+"}");
 		return result;
 	}
 
@@ -136,6 +141,7 @@ public class MaterialReceiveController {
 	public EUDataGridResult searchMaterialReceiveByMaterialId(Integer page, Integer rows, String searchValue)
 			throws Exception{
 		EUDataGridResult result = materialReceiveService.searchMaterialReceiveByMaterialId(page, rows, searchValue);
+		log("产品：查询数据： {物料id："+searchValue+"}");
 		return result;
 	}
 }

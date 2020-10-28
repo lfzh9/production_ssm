@@ -10,7 +10,13 @@ public class ProcessExample {
 
     protected List<Criteria> oredCriteria;
 
-    public ProcessExample() {
+    @Override
+	public String toString() {
+		return "ProcessExample [orderByClause=" + orderByClause + ", distinct="
+				+ distinct + ", oredCriteria=" + oredCriteria + "]";
+	}
+
+	public ProcessExample() {
         oredCriteria = new ArrayList<Criteria>();
     }
 

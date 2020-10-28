@@ -11,7 +11,14 @@ public class TechnologyRequirementExample {
 
     protected List<Criteria> oredCriteria;
 
-    public TechnologyRequirementExample() {
+    @Override
+	public String toString() {
+		return "TechnologyRequirementExample [orderByClause=" + orderByClause
+				+ ", distinct=" + distinct + ", oredCriteria=" + oredCriteria
+				+ "]";
+	}
+
+	public TechnologyRequirementExample() {
         oredCriteria = new ArrayList<Criteria>();
     }
 

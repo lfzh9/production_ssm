@@ -10,7 +10,13 @@ public class WorkExample {
 
     protected List<Criteria> oredCriteria;
 
-    public WorkExample() {
+    @Override
+	public String toString() {
+		return "WorkExample [orderByClause=" + orderByClause + ", distinct="
+				+ distinct + ", oredCriteria=" + oredCriteria + "]";
+	}
+
+	public WorkExample() {
         oredCriteria = new ArrayList<Criteria>();
     }
 

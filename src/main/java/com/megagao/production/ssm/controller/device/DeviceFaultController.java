@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.megagao.production.ssm.common.CommonController;
 import com.megagao.production.ssm.domain.DeviceFault;
 import com.megagao.production.ssm.domain.customize.CustomResult;
 import com.megagao.production.ssm.domain.customize.EUDataGridResult;
@@ -20,7 +21,7 @@ import com.megagao.production.ssm.service.DeviceFaultService;
 
 @Controller
 @RequestMapping("/deviceFault")
-public class DeviceFaultController {
+public class DeviceFaultController extends CommonController{
 	
 	@Autowired
 	private DeviceFaultService deviceFaultService;
@@ -73,6 +74,7 @@ public class DeviceFaultController {
 		if(deviceFaultService.get(deviceFault.getDeviceFaultId()) != null){
 			result = new CustomResult(0, "该设备故障编号已经存在，请更换设备故障编号！", null);
 		}else{
+			log("设备故障：添加数据:{"+deviceFault+"}");
 			result = deviceFaultService.insert(deviceFault);
 		}
 		return result;
@@ -85,6 +87,7 @@ public class DeviceFaultController {
 			FieldError fieldError = bindingResult.getFieldError();
 			return CustomResult.build(100, fieldError.getDefaultMessage());
 		}
+		
 		return deviceFaultService.update(deviceFault);
 	}
 	
@@ -92,6 +95,7 @@ public class DeviceFaultController {
 	@ResponseBody
 	private CustomResult deleteBatch(String[] ids) throws Exception {
 		CustomResult result = deviceFaultService.deleteBatch(ids);
+		log("设备故障：删除数据:{"+ids+"}");
 		return result;
 	}
 	
@@ -112,6 +116,7 @@ public class DeviceFaultController {
 			FieldError fieldError = bindingResult.getFieldError();
 			return CustomResult.build(100, fieldError.getDefaultMessage());
 		}
+		log("设备故障：修改数据:{"+deviceFault+"}");
 		return deviceFaultService.updateAll(deviceFault);
 	}
 	
@@ -121,6 +126,7 @@ public class DeviceFaultController {
 	public EUDataGridResult searchDeviceFaultByDeviceFaultId(Integer page, Integer rows, String searchValue) 
 			throws Exception{
 		EUDataGridResult result = deviceFaultService.searchDeviceFaultByDeviceFaultId(page, rows, searchValue);
+		log("设备故障：查询数据:{deviceFaultId="+searchValue+"}");
 		return result;
 	}
 	
@@ -130,6 +136,7 @@ public class DeviceFaultController {
 	public EUDataGridResult searchDeviceFaultByDeviceName(Integer page, Integer rows, String searchValue) 
 			throws Exception{
 		EUDataGridResult result = deviceFaultService.searchDeviceFaultByDeviceName(page, rows, searchValue);
+		log("设备故障：查询数据:{deviceName="+searchValue+"}");
 		return result;
 	}
 }

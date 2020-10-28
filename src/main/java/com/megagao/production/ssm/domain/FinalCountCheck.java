@@ -42,7 +42,17 @@ public class FinalCountCheck {
     @Size(max=5000, message="{note.length.error}")
     private String note;
 
-    public String getfCountCheckId() {
+    @Override
+	public String toString() {
+		return "FinalCountCheck [fCountCheckId=" + fCountCheckId + ", orderId="
+				+ orderId + ", checkItem=" + checkItem + ", sample=" + sample
+				+ ", checkNumber=" + checkNumber + ", unqualify=" + unqualify
+				+ ", qualify=" + qualify + ", cdate=" + cdate
+				+ ", measureData=" + measureData + ", empId=" + empId
+				+ ", result=" + result + ", note=" + note + "]";
+	}
+
+	public String getfCountCheckId() {
         return fCountCheckId;
     }
 

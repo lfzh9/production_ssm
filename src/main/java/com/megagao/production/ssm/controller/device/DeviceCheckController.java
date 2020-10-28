@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.megagao.production.ssm.common.CommonController;
 import com.megagao.production.ssm.domain.DeviceCheck;
 import com.megagao.production.ssm.domain.customize.CustomResult;
 import com.megagao.production.ssm.domain.customize.EUDataGridResult;
@@ -18,7 +19,7 @@ import com.megagao.production.ssm.service.DeviceCheckService;
 
 @Controller
 @RequestMapping("/deviceCheck")
-public class DeviceCheckController {
+public class DeviceCheckController extends CommonController{
 	
 	@Autowired
 	private DeviceCheckService deviceCheckService;
@@ -57,6 +58,7 @@ public class DeviceCheckController {
 		if(deviceCheckService.get(deviceCheck.getDeviceCheckId()) != null){
 			result = new CustomResult(0, "该设备例检编号已经存在，请更换设备例检编号！", null);
 		}else{
+			log("设备：添加数据:{"+deviceCheck+"}");
 			result = deviceCheckService.insert(deviceCheck);
 		}
 		return result;
@@ -69,6 +71,7 @@ public class DeviceCheckController {
 			FieldError fieldError = bindingResult.getFieldError();
 			return CustomResult.build(100, fieldError.getDefaultMessage());
 		}
+		log("设备：修改数据:{"+deviceCheck+"}");
 		return deviceCheckService.update(deviceCheck);
 	}
 	
@@ -86,6 +89,7 @@ public class DeviceCheckController {
 	@ResponseBody
 	private CustomResult deleteBatch(String[] ids) throws Exception {
 		CustomResult result = deviceCheckService.deleteBatch(ids);
+		log("设备：删除数据:{"+ids+"}");
 		return result;
 	}
 	
@@ -95,6 +99,7 @@ public class DeviceCheckController {
 	public EUDataGridResult searchDeviceCheckByDeviceCheckId(Integer page, Integer rows, String searchValue)
 			throws Exception{
 		EUDataGridResult result = deviceCheckService.searchDeviceCheckByDeviceCheckId(page, rows, searchValue);
+		log("设备：查询数据:{deviceCheckId="+searchValue+"}");
 		return result;
 	}
 	
@@ -104,6 +109,7 @@ public class DeviceCheckController {
 	public EUDataGridResult searchDeviceCheckByDeviceName(Integer page, Integer rows, String searchValue)
 			throws Exception{
 		EUDataGridResult result = deviceCheckService.searchDeviceCheckByDeviceName(page, rows, searchValue);
+		log("设备：查询数据:{deviceName="+searchValue+"}");
 		return result;
 	}
 }

@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.megagao.production.ssm.common.CommonController;
 import com.megagao.production.ssm.domain.Device;
 import com.megagao.production.ssm.domain.customize.CustomResult;
 import com.megagao.production.ssm.domain.customize.EUDataGridResult;
@@ -20,7 +21,7 @@ import com.megagao.production.ssm.service.DeviceService;
 
 @Controller
 @RequestMapping("/deviceList")
-public class DeviceListController {
+public class DeviceListController extends CommonController{
 
 	@Autowired
 	private DeviceService deviceService;
@@ -64,8 +65,10 @@ public class DeviceListController {
 			return CustomResult.build(100, fieldError.getDefaultMessage());
 		}
 		if(deviceService.get(device.getDeviceId()) != null){
+			
 			result = new CustomResult(0, "该设备编号已经存在，请更换设备编号！", null);
 		}else{
+			log("设备：添加数据:{"+device+"}");
 			result = deviceService.insert(device);
 		}
 		return result;
@@ -78,6 +81,7 @@ public class DeviceListController {
 			FieldError fieldError = bindingResult.getFieldError();
 			return CustomResult.build(100, fieldError.getDefaultMessage());
 		}
+		
 		return deviceService.update(device);
 	}
 	
@@ -85,6 +89,7 @@ public class DeviceListController {
 	@ResponseBody
 	private CustomResult deleteBatch(String[] ids) throws Exception {
 		CustomResult result = deviceService.deleteBatch(ids);
+		log("设备：删除数据:{"+ids+"}");
 		return result;
 	}
 	
@@ -95,6 +100,7 @@ public class DeviceListController {
 			FieldError fieldError = bindingResult.getFieldError();
 			return CustomResult.build(100, fieldError.getDefaultMessage());
 		}
+		
 		return deviceService.updateNote(device);
 	}
 	
@@ -105,6 +111,8 @@ public class DeviceListController {
 			FieldError fieldError = bindingResult.getFieldError();
 			return CustomResult.build(100, fieldError.getDefaultMessage());
 		}
+		log("设备：修改数据:{"+device+"}");
+
 		return deviceService.updateAll(device);
 	}
 	
@@ -113,6 +121,8 @@ public class DeviceListController {
 	@ResponseBody
 	public EUDataGridResult searchDeviceByDeviceId(Integer page, Integer rows, String searchValue) throws Exception{
 		EUDataGridResult result = deviceService.searchDeviceByDeviceId(page, rows, searchValue);
+		log("设备：查询数据:{deviceId="+searchValue+"}");
+
 		return result;
 	}
 	
@@ -121,6 +131,7 @@ public class DeviceListController {
 	@ResponseBody
 	public EUDataGridResult searchDeviceByDeviceName(Integer page, Integer rows, String searchValue) throws Exception{
 		EUDataGridResult result = deviceService.searchDeviceByDeviceName(page, rows, searchValue);
+		log("设备：查询数据:{deviceName="+searchValue+"}");
 		return result;
 	}
 	
@@ -130,6 +141,7 @@ public class DeviceListController {
 	public EUDataGridResult searchDeviceByDeviceTypeName(Integer page, Integer rows, String searchValue)
 			throws Exception{
 		EUDataGridResult result = deviceService.searchDeviceByDeviceTypeName(page, rows, searchValue);
+		log("设备：查询数据:{deviceTypeName="+searchValue+"}");
 		return result;
 	}
 }

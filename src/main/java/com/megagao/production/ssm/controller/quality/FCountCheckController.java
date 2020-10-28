@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.megagao.production.ssm.common.CommonController;
 import com.megagao.production.ssm.domain.FinalCountCheck;
 import com.megagao.production.ssm.domain.customize.CustomResult;
 import com.megagao.production.ssm.domain.customize.EUDataGridResult;
@@ -25,7 +26,7 @@ import com.megagao.production.ssm.service.FCountCheckService;
 
 @Controller
 @RequestMapping("/f_count_check")
-public class FCountCheckController {
+public class FCountCheckController extends CommonController{
 
 	@Autowired
 	private FCountCheckService fCountCheckService;
@@ -79,6 +80,7 @@ public class FCountCheckController {
 		if(fCountCheckService.get(finalCountCheck.getfCountCheckId()) != null){
 			result = new CustomResult(0, "该成品计数质检编号已经存在，请更换！", null);
 		}else{
+			log("成品：添加数据： {"+finalCountCheck+"}");
 			result =  fCountCheckService.insert(finalCountCheck);
 		}
 		return result;
@@ -92,6 +94,7 @@ public class FCountCheckController {
 			FieldError fieldError = bindingResult.getFieldError();
 			return CustomResult.build(100, fieldError.getDefaultMessage());
 		}
+		log("成品：修改数据： {"+finalCountCheck+"}");
 		return fCountCheckService.updateAll(finalCountCheck);
 	}
 	
@@ -110,6 +113,7 @@ public class FCountCheckController {
 	@ResponseBody
 	private CustomResult deleteBatch(String[] ids) throws Exception {
 		CustomResult result = fCountCheckService.deleteBatch(ids);
+		log("成品：删除数据： {"+ids+"}");
 		return result;
 	}
 	
@@ -119,6 +123,7 @@ public class FCountCheckController {
 	public EUDataGridResult searchFCountCheckByFCountCheckId(Integer page, Integer rows, String searchValue) 
 			throws Exception{
 		EUDataGridResult result = fCountCheckService.searchFCountCheckByFCountCheckId(page, rows, searchValue);
+		log("成品：删除数据： {成品计数质检id:"+searchValue+"}");
 		return result;
 	}
 	
@@ -128,6 +133,7 @@ public class FCountCheckController {
 	public EUDataGridResult searchFCountCheckByOrderId(Integer page, Integer rows, String searchValue) 
 			throws Exception{
 		EUDataGridResult result = fCountCheckService.searchFCountCheckByOrderId(page, rows, searchValue);
+		log("成品：删除数据： {订单id:"+searchValue+"}");
 		return result;
 	}
 }

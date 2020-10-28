@@ -26,7 +26,16 @@ public class UnqualifyApply {
     @Size(max=5000, message="{note.length.error}")
     private String note;
 
-    public String getUnqualifyApplyId() {
+    @Override
+	public String toString() {
+		return "UnqualifyApply [unqualifyApplyId=" + unqualifyApplyId
+				+ ", productId=" + productId + ", unqualifyItem="
+				+ unqualifyItem + ", unqualifyCount=" + unqualifyCount
+				+ ", assemblyDate=" + assemblyDate + ", empId=" + empId
+				+ ", applyDate=" + applyDate + ", note=" + note + "]";
+	}
+
+	public String getUnqualifyApplyId() {
         return unqualifyApplyId;
     }
 

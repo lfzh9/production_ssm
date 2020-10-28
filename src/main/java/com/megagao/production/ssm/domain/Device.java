@@ -34,7 +34,19 @@ public class Device {
     @Size(max=5000, message="{note.length.error}")
     private String note;
 
-    public String getDeviceId() {
+    @Override
+	public String toString() {
+		return "Device [deviceId=" + deviceId + ", deviceName=" + deviceName
+				+ ", deviceTypeId=" + deviceTypeId + ", deviceStatusId="
+				+ deviceStatusId + ", deviceStatus=" + deviceStatus
+				+ ", devicePurchaseDate=" + devicePurchaseDate
+				+ ", devicePurchasePrice=" + devicePurchasePrice
+				+ ", deviceManufactureDate=" + deviceManufactureDate
+				+ ", deviceServiceLife=" + deviceServiceLife
+				+ ", deviceKeeperId=" + deviceKeeperId + ", note=" + note + "]";
+	}
+
+	public String getDeviceId() {
         return deviceId;
     }
 

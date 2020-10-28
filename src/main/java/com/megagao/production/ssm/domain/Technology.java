@@ -34,7 +34,18 @@ public class Technology {
 	@Max(value=999999999, message="超负荷工序能力不能超过999999999")
     private Integer overfulfilCapacity;
 
-    public String getTechnologyId() {
+    @Override
+	public String toString() {
+		return "Technology [technologyId=" + technologyId + ", technologyName="
+				+ technologyName + ", price=" + price + ", vitalProcessPeriod="
+				+ vitalProcessPeriod + ", standardCapacity=" + standardCapacity
+				+ ", overtimeStandardCapacity=" + overtimeStandardCapacity
+				+ ", overtimeOverfulfilCapacity=" + overtimeOverfulfilCapacity
+				+ ", doubleCapacity=" + doubleCapacity
+				+ ", overfulfilCapacity=" + overfulfilCapacity + "]";
+	}
+
+	public String getTechnologyId() {
         return technologyId;
     }
 

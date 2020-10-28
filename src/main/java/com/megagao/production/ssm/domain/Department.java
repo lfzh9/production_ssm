@@ -13,7 +13,13 @@ public class Department {
 	@Size(max=5000, message="{note.length.error}")
     private String note;
 
-    public String getDepartmentId() {
+    @Override
+	public String toString() {
+		return "Department [departmentId=" + departmentId + ", departmentName="
+				+ departmentName + ", note=" + note + "]";
+	}
+
+	public String getDepartmentId() {
         return departmentId;
     }
 

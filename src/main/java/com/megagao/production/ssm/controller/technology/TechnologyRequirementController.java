@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.megagao.production.ssm.common.CommonController;
 import com.megagao.production.ssm.domain.Technology;
 import com.megagao.production.ssm.domain.TechnologyRequirement;
 import com.megagao.production.ssm.domain.customize.CustomResult;
@@ -22,7 +23,7 @@ import com.megagao.production.ssm.service.TechnologyRequirementService;
 
 @Controller
 @RequestMapping("/technologyRequirement")
-public class TechnologyRequirementController {
+public class TechnologyRequirementController extends CommonController{
 
 	@Autowired
 	private TechnologyRequirementService technologyRequirementService;
@@ -79,6 +80,7 @@ public class TechnologyRequirementController {
 		if(technologyRequirementService.get(technologyRequirement.getTechnologyRequirementId()) != null){
 			result = new CustomResult(0, "该工艺要求编号已经存在，请更换工艺要求编号！", null);
 		}else{
+			log("添加工艺要求：{"+technologyRequirement+"}");
 			result = technologyRequirementService.insert(technologyRequirement);
 		}
 		return result;
@@ -92,6 +94,7 @@ public class TechnologyRequirementController {
 			FieldError fieldError = bindingResult.getFieldError();
 			return CustomResult.build(100, fieldError.getDefaultMessage());
 		}
+		log("修改工艺要求：{"+technologyRequirement+"}");
 		return technologyRequirementService.updateAll(technologyRequirement);
 	}
 
@@ -110,6 +113,7 @@ public class TechnologyRequirementController {
 	@ResponseBody
 	private CustomResult deleteBatch(String[] ids) throws Exception {
 		CustomResult result = technologyRequirementService.deleteBatch(ids);
+		log("删除工艺要求：{"+ids+"}");
 		return result;
 	}
 	
@@ -120,6 +124,7 @@ public class TechnologyRequirementController {
 			String searchValue) throws Exception{
 		EUDataGridResult result = technologyRequirementService
 				.searchTechnologyRequirementByTechnologyRequirementId(page, rows, searchValue);
+		log("查询工艺要求：{工艺要求id:"+searchValue+"}");
 		return result;
 	}
 	
@@ -130,6 +135,7 @@ public class TechnologyRequirementController {
 			String searchValue) throws Exception{
 		EUDataGridResult result = technologyRequirementService
 				.searchTechnologyRequirementByTechnologyName(page, rows, searchValue);
+		log("查询工艺要求：{工艺要求名称:"+searchValue+"}");
 		return result;
 	}
 }

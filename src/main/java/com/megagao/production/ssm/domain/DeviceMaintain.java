@@ -25,7 +25,17 @@ public class DeviceMaintain {
 
     private String note;
 
-    public String getDeviceMaintainId() {
+    @Override
+	public String toString() {
+		return "DeviceMaintain [deviceMaintainId=" + deviceMaintainId
+				+ ", deviceFaultId=" + deviceFaultId + ", deviceMaintainEmpId="
+				+ deviceMaintainEmpId + ", deviceMaintainDate="
+				+ deviceMaintainDate + ", deviceMaintainResult="
+				+ deviceMaintainResult + ", deviceMaintainCost="
+				+ deviceMaintainCost + ", note=" + note + "]";
+	}
+
+	public String getDeviceMaintainId() {
         return deviceMaintainId;
     }
 

@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.megagao.production.ssm.common.CommonController;
 import com.megagao.production.ssm.domain.authority.SysRolePermission;
 import com.megagao.production.ssm.domain.customize.CustomResult;
 import com.megagao.production.ssm.domain.customize.EUDataGridResult;
@@ -16,7 +17,7 @@ import com.megagao.production.ssm.service.PermissionService;
 
 @Controller
 @RequestMapping("/permission")
-public class PermissionController {
+public class PermissionController extends CommonController{
 
 	@Autowired
 	private PermissionService permissionService;
@@ -67,6 +68,7 @@ public class PermissionController {
 	@ResponseBody
 	private CustomResult insert(SysRolePermission sysRolePermission) throws Exception {
 		CustomResult result = permissionService.insert(sysRolePermission);
+		log("添加权限：{"+sysRolePermission+"}");
 		return result;
 	}
 	
@@ -88,6 +90,7 @@ public class PermissionController {
 	@ResponseBody
 	private CustomResult updateAll(SysRolePermission sysRolePermission) throws Exception {
 		CustomResult result = permissionService.updateAll(sysRolePermission);
+		log("添加权限：{"+sysRolePermission+"}");
 		return result;
 	}
 	
@@ -95,6 +98,7 @@ public class PermissionController {
 	@ResponseBody
 	private CustomResult delete(String id) throws Exception {
 		CustomResult result = permissionService.delete(id);
+		log("移除权限：{id="+id+"}");
 		return result;
 	}
 

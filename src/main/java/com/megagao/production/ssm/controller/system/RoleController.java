@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.megagao.production.ssm.common.CommonController;
 import com.megagao.production.ssm.domain.authority.SysRole;
 import com.megagao.production.ssm.domain.customize.CustomResult;
 import com.megagao.production.ssm.domain.customize.EUDataGridResult;
@@ -21,7 +22,7 @@ import com.megagao.production.ssm.service.RoleService;
 
 @Controller
 @RequestMapping("/role")
-public class RoleController {
+public class RoleController extends CommonController{
 
 	@Autowired
 	private RoleService roleService;
@@ -79,6 +80,7 @@ public class RoleController {
 		}else if(roleService.get(role.getRoleId()) != null){
 			result = new CustomResult(0, "该角色编号已经存在，请更换角色编号！", null);
 		}else{
+			log("添加角色：{"+role+"}");
 			result = roleService.insert(role);
 		}
 		return result;
@@ -102,6 +104,7 @@ public class RoleController {
 		if(roleService.findByRoleNameAndId(role.getRoleName(), role.getRoleId()).size()>0){
 			result = new CustomResult(0, "该角色名已经存在，请更换角色名！", null);
 		}else{
+			log("修改角色：{"+role+"}");
 			result = roleService.updateAll(role);
 		}
 		return result;
@@ -118,6 +121,7 @@ public class RoleController {
 	@ResponseBody
 	private CustomResult deleteBatch(String[] ids) throws Exception {
 		CustomResult result = roleService.deleteBatch(ids);
+		log("删除角色：{"+ids+"}");
 		return result;
 	}
 	
@@ -126,6 +130,7 @@ public class RoleController {
 	@ResponseBody
 	public EUDataGridResult searchRoleByRoleId(Integer page, Integer rows, String searchValue) throws Exception{
 		EUDataGridResult result = roleService.searchRoleByRoleId(page, rows, searchValue);
+		log("查询角色：{角色id:"+searchValue+"}");
 		return result;
 	}
 	
@@ -134,6 +139,7 @@ public class RoleController {
 	@ResponseBody
 	public EUDataGridResult searchRoleByRoleName(Integer page, Integer rows, String searchValue) throws Exception{
 		EUDataGridResult result = roleService.searchRoleByRoleName(page, rows, searchValue);
+		log("查询角色：{角色名:"+searchValue+"}");
 		return result;
 	}
 }

@@ -12,7 +12,13 @@ public class DeviceExample {
 
     protected List<Criteria> oredCriteria;
 
-    public DeviceExample() {
+    @Override
+	public String toString() {
+		return "DeviceExample [orderByClause=" + orderByClause + ", distinct="
+				+ distinct + ", oredCriteria=" + oredCriteria + "]";
+	}
+
+	public DeviceExample() {
         oredCriteria = new ArrayList<Criteria>();
     }
 

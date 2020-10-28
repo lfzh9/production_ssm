@@ -11,7 +11,14 @@ public class DeviceFaultExample {
 
     protected List<Criteria> oredCriteria;
 
-    public DeviceFaultExample() {
+    @Override
+	public String toString() {
+		return "DeviceFaultExample [orderByClause=" + orderByClause
+				+ ", distinct=" + distinct + ", oredCriteria=" + oredCriteria
+				+ "]";
+	}
+
+	public DeviceFaultExample() {
         oredCriteria = new ArrayList<Criteria>();
     }
 

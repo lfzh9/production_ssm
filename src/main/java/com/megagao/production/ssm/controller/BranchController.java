@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.megagao.production.ssm.common.CommonController;
 import com.megagao.production.ssm.domain.Branch;
 import com.megagao.production.ssm.domain.customize.CustomResult;
 import com.megagao.production.ssm.domain.customize.EUDataGridResult;
@@ -17,7 +18,7 @@ import com.megagao.production.ssm.service.BranchService;
 
 @Controller
 @RequestMapping("/branch")
-public class BranchController {
+public class BranchController extends CommonController{
 	@Autowired
 	private BranchService branchService;
 	
@@ -50,8 +51,9 @@ public class BranchController {
 		if(branchService.get(branch.getId()) != null){
 			result = new CustomResult(0, "该机构编号已经存在，请更换机构编号！", null);
 		}else{
-			
+			log("添加数据:{表：机构"+branch+"}");
 			result = branchService.insert(branch);
+			
 		}
 		return result;
 	}
@@ -69,6 +71,7 @@ public class BranchController {
 			FieldError fieldError = bindingResult.getFieldError();
 			return CustomResult.build(100, fieldError.getDefaultMessage());
 		}
+		log("修改数据:{机构："+branch+"}");
 		return branchService.updateAll(branch);
 	}
 	

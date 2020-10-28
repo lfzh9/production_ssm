@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.megagao.production.ssm.common.CommonController;
 import com.megagao.production.ssm.domain.MaterialConsume;
 import com.megagao.production.ssm.domain.customize.CustomResult;
 import com.megagao.production.ssm.domain.customize.EUDataGridResult;
@@ -21,7 +22,7 @@ import com.megagao.production.ssm.service.MaterialConsumeService;
 
 @Controller
 @RequestMapping("/materialConsume")
-public class MaterialConsumeController {
+public class MaterialConsumeController extends CommonController{
 
 	@Autowired
 	private MaterialConsumeService materialConsumeService;
@@ -74,6 +75,7 @@ public class MaterialConsumeController {
 		if(materialConsumeService.get(materialConsume.getConsumeId()) != null){
 			result = new CustomResult(0, "该订单编号已经存在，请更换订单编号！", null);
 		}else{
+			log("订单编号：添加数据： {："+materialConsume+"}");
 			result = materialConsumeService.insert(materialConsume);
 		}
 		return result;
@@ -98,6 +100,7 @@ public class MaterialConsumeController {
 			FieldError fieldError = bindingResult.getFieldError();
 			return CustomResult.build(100, fieldError.getDefaultMessage());
 		}
+		log("订单编号：修改数据： {："+materialConsume+"}");
 		return materialConsumeService.updateAll(materialConsume);
 	}
 	
@@ -124,6 +127,7 @@ public class MaterialConsumeController {
 	private CustomResult deleteBatch(String[] ids) throws Exception {
 		System.out.println(ids);
 		CustomResult result = materialConsumeService.deleteBatch(ids);
+		log("订单编号：删除数据： {："+ids+"}");
 		return result;
 	}
 	
@@ -133,6 +137,7 @@ public class MaterialConsumeController {
 	public EUDataGridResult searchMaterialConsumeByConsumeId(Integer page, Integer rows, String searchValue) 
 			throws Exception{
 		EUDataGridResult result = materialConsumeService.searchMaterialConsumeByConsumeId(page, rows, searchValue);
+		log("订单编号：查询数据： {客户id："+searchValue+"}");
 		return result;
 	}
 
@@ -142,6 +147,8 @@ public class MaterialConsumeController {
 	public EUDataGridResult searchMaterialConsumeByMaterialId(Integer page, Integer rows, String searchValue) 
 			throws Exception{
 		EUDataGridResult result = materialConsumeService.searchMaterialConsumeByMaterialId(page, rows, searchValue);
+		log("订单编号：查询数据： {物料id："+searchValue+"}");
+
 		return result;
 	}
 
@@ -151,6 +158,8 @@ public class MaterialConsumeController {
 	public EUDataGridResult searchMaterialConsumeByWorkId(Integer page, Integer rows, String searchValue)
 			throws Exception{
 		EUDataGridResult result = materialConsumeService.searchMaterialConsumeByWorkId(page, rows, searchValue);
+		log("订单编号：查询数据： {作业id："+searchValue+"}");
+
 		return result;
 	}
 }

@@ -135,4 +135,14 @@ public class COrder {
 		this.image = image;
 	}
 
+	@Override
+	public String toString() {
+		return "COrder [orderId=" + orderId + ", orderDate=" + orderDate
+				+ ", requestDate=" + requestDate + ", note=" + note
+				+ ", quantity=" + quantity + ", unitPrice=" + unitPrice
+				+ ", unit=" + unit + ", image=" + image + ", file=" + file
+				+ ", status=" + status + ", customId=" + customId
+				+ ", productId=" + productId + "]";
+	}
+
 }
