@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.megagao.production.ssm.common.CommonController;
 import com.megagao.production.ssm.domain.Branch;
 import com.megagao.production.ssm.domain.Dept;
 import com.megagao.production.ssm.domain.customize.CustomResult;
@@ -20,7 +21,7 @@ import com.megagao.production.ssm.service.DeptService;
 
 @Controller
 @RequestMapping("/dept")
-public class DeptController {
+public class DeptController extends CommonController{
 	@Autowired
 	private DeptService deptService;
 	
@@ -59,7 +60,7 @@ public class DeptController {
 		if(deptService.get(dept.getDept_id()) != null){
 			result = new CustomResult(0, "该部门编号已经存在，请更换部门编号！", null);
 		}else{
-			
+			log("部门：添加数据:{"+dept+"}");
 			result = deptService.insert(dept);
 		}
 		return result;
@@ -78,6 +79,7 @@ public class DeptController {
 			FieldError fieldError = bindingResult.getFieldError();
 			return CustomResult.build(100, fieldError.getDefaultMessage());
 		}
+		log("部门：修改数据:{"+dept+"}");
 		return deptService.updateAll(dept);
 	}
 	
@@ -92,6 +94,7 @@ public class DeptController {
 	@ResponseBody
 	private CustomResult deleteBatch(String[] ids) throws Exception {
 		CustomResult result = deptService.deleteBatch(ids);
+		log("部门：删除数据:{"+ids+"}");
 		return result;
 	}
 	
@@ -102,6 +105,7 @@ public class DeptController {
 	@ResponseBody
 	public EUDataGridResult searchBranchById(Integer page, Integer rows, String searchValue) throws Exception{
 		EUDataGridResult result = deptService.searchDeptById(page, rows, searchValue);
+		log("部门：查询数据:{部门编号"+searchValue+"}");
 		return result;
 	}
 	//根据订单id查找
@@ -110,6 +114,7 @@ public class DeptController {
 	public EUDataGridResult searchDeptByName(Integer page, Integer rows, String searchValue) throws Exception{
 		searchValue = new String(searchValue.getBytes("iso8859-1"),"utf-8"); 
 		EUDataGridResult result = deptService.searchDeptByName(page, rows, searchValue);
+		log("部门：查询数据:{部门名称："+searchValue+"}");
 		return result;
 	}
 

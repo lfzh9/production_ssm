@@ -14,23 +14,14 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.megagao.production.ssm.common.CommonController;
 import com.megagao.production.ssm.domain.Branch;
-<<<<<<< Updated upstream
-=======
-import com.megagao.production.ssm.domain.COrder;
-import com.megagao.production.ssm.domain.Department;
->>>>>>> Stashed changes
 import com.megagao.production.ssm.domain.customize.CustomResult;
 import com.megagao.production.ssm.domain.customize.EUDataGridResult;
 import com.megagao.production.ssm.service.BranchService;
 
 @Controller
 @RequestMapping("/branch")
-<<<<<<< Updated upstream
 public class BranchController extends CommonController{
-=======
-public class BranchController {
-	
->>>>>>> Stashed changes
+
 	@Autowired
 	private BranchService branchService;
 	
@@ -68,7 +59,7 @@ public class BranchController {
 		if(branchService.get(branch.getId()) != null){
 			result = new CustomResult(0, "该机构编号已经存在，请更换机构编号！", null);
 		}else{
-			log("添加数据:{表：机构"+branch+"}");
+			log("机构：添加数据:{"+branch+"}");
 			result = branchService.insert(branch);
 			
 		}
@@ -88,7 +79,7 @@ public class BranchController {
 			FieldError fieldError = bindingResult.getFieldError();
 			return CustomResult.build(100, fieldError.getDefaultMessage());
 		}
-		log("修改数据:{机构："+branch+"}");
+		log("机构：修改数据:{"+branch+"}");
 		return branchService.updateAll(branch);
 	}
 	
@@ -103,6 +94,7 @@ public class BranchController {
 	@ResponseBody
 	private CustomResult deleteBatch(String[] ids) throws Exception {
 		CustomResult result = branchService.deleteBatch(ids);
+		log("机构：删除数据:{"+ids+"}");
 		return result;
 	}
 	
@@ -113,6 +105,7 @@ public class BranchController {
 	@ResponseBody
 	public EUDataGridResult searchBranchById(Integer page, Integer rows, String searchValue) throws Exception{
 		EUDataGridResult result = branchService.searchBranchById(page, rows, searchValue);
+		log("机构：查询数据:{机构编号："+searchValue+"}");
 		return result;
 	}
 	//根据订单id查找
@@ -121,6 +114,7 @@ public class BranchController {
 	public EUDataGridResult searchBranchByName(Integer page, Integer rows, String searchValue) throws Exception{
 		searchValue = new String(searchValue.getBytes("iso8859-1"),"utf-8"); 
 		EUDataGridResult result = branchService.searchBranchByName(page, rows, searchValue);
+		log("机构：查询数据:{机构名称："+searchValue+"}");
 		return result;
 	}
 	//根据订单id查找
@@ -129,6 +123,7 @@ public class BranchController {
 	public EUDataGridResult searchBranchByShortName(Integer page, Integer rows, String searchValue) throws Exception{
 		searchValue = new String(searchValue.getBytes("iso8859-1"),"utf-8"); 
 		EUDataGridResult result = branchService.searchBranchByShortName(page, rows, searchValue);
+		log("机构：查询数据:{机构简称："+searchValue+"}");
 		return result;
 	}
 	

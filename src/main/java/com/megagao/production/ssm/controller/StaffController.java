@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.megagao.production.ssm.common.CommonController;
 import com.megagao.production.ssm.domain.Branch;
 import com.megagao.production.ssm.domain.Staff;
 import com.megagao.production.ssm.domain.customize.CustomResult;
@@ -20,7 +21,7 @@ import com.megagao.production.ssm.service.StaffService;
 
 @Controller
 @RequestMapping("/staff")
-public class StaffController {
+public class StaffController extends CommonController{
 	
 	@Autowired
 	private StaffService staffService;
@@ -56,15 +57,10 @@ public class StaffController {
 			System.out.println(fieldError.getDefaultMessage());
 			return CustomResult.build(100, fieldError.getDefaultMessage());
 		}
-		System.out.println("111111111111111111111111111111111111111111111");
-		System.out.println("111111111111111111111111111111111111111111111");
-		System.out.println("111111111111111111111111111111111111111111111");
 		if(staffService.get(staff.getId()) != null){
-			System.out.println("3333333333333");
-			result = new CustomResult(0, "该机构编号已经存在，请更换机构编号！", null);
+			result = new CustomResult(0, "该员工编号已经存在，请更换员工编号！", null);
 		}else{
-			System.out.println("22222222222222222222222222222222");
-			System.out.println(staff);
+			log("员工：添加数据:{"+staff+"}");
 			result = staffService.insert(staff);
 			
 		}
@@ -82,6 +78,7 @@ public class StaffController {
 			FieldError fieldError = bindingResult.getFieldError();
 			return CustomResult.build(100, fieldError.getDefaultMessage());
 		}
+		log("员工：修改数据:{"+staff+"}");
 		return staffService.updateAll(staff);
 	}
 	
@@ -96,7 +93,8 @@ public class StaffController {
 	@ResponseBody
 	private CustomResult deleteBatch(String[] ids) throws Exception {
 		CustomResult result = staffService.deleteBatch(ids);
-		return result;
+		log("员工：删除数据:{"+ids+"}");
+	return result;
 	}
 	
 	
@@ -106,6 +104,7 @@ public class StaffController {
 	@ResponseBody
 	public EUDataGridResult searchStaffById(Integer page, Integer rows, String searchValue) throws Exception{
 		EUDataGridResult result = staffService.searchStaffById(page, rows, searchValue);
+		log("员工：查询数据:{员工编号："+searchValue+"}");
 		return result;
 	}
 	//根据订单id查找
@@ -114,6 +113,7 @@ public class StaffController {
 	public EUDataGridResult searchStaffByName(Integer page, Integer rows, String searchValue) throws Exception{
 		searchValue = new String(searchValue.getBytes("iso8859-1"),"utf-8"); 
 		EUDataGridResult result = staffService.searchStaffByName(page, rows, searchValue);
+		log("员工：查询数据:{员工名字："+searchValue+"}");
 		return result;
 	}
 	
