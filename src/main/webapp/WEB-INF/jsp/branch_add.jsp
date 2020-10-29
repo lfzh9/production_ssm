@@ -31,7 +31,14 @@
     					/>
     			</td>  
 	        </tr>
-	        
+	        <tr>
+	            <td>加入时间:</td>
+	            <td>
+	             <input class="easyui-datetimebox" name="time"/>
+	            	
+    			</td>  
+	        </tr>
+	       
 	       
 	    </table>
 	</form>

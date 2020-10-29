@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="com.megagao.production.ssm.mapper.StaffMapper">
+<select id="find" resultType="Staff">
+	select * from user
+</select>
+<select id="loadStaffById" resultType="Staff" parameterType="string">
+	select * from user where id = #{id}
+</select>
+<select id="searchStaffById" resultType="Staff" parameterType="string">
+	select * from user where id like CONCAT('%',#{id},'%' ) 
+</select>
+<select id="searchStaffByName" resultType="Staff" parameterType="string">
+	select * from user where name like CONCAT('%',#{name},'%' ) 
+</select>
+
+<insert id="insert" parameterType="Staff">
+	insert into user (id,username,locked,sex,role_name,dept_name)
+    values (#{id,jdbcType=VARCHAR}, #{username,jdbcType=VARCHAR}, #{locked,jdbcType=CHAR}, #{sex,jdbcType=VARCHAR}, #{role_name,jdbcType=CHAR}, #{dept_name,jdbcType=CHAR})
+</insert>
+<update id="update" parameterType="Staff">
+	update user set username=#{username},locked=#{locked},role_name=#{role_name},dept_name=#{dept_name} where id = #{id}
+</update>
+
+<delete id="deleteByPrimaryKey">
+	delete from user where id=#{id}
+</delete>
+
+<!-- 批量删除 -->
+	<delete id="deleteBatch">
+		DELETE
+		FROM
+			user
+		WHERE
+			id IN
+		<foreach collection="array" item="id" open="(" close=")" separator=",">
+			#{id}
+		</foreach>
+	</delete>
+</mapper>

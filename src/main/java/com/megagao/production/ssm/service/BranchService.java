@@ -8,7 +8,7 @@ import com.megagao.production.ssm.domain.customize.EUDataGridResult;
 
 public interface BranchService {
 	
-	List<Branch> find() ;
+	List<Branch> find();
 
 	EUDataGridResult getList(int page, int rows) throws Exception;
 

@@ -18,11 +18,11 @@
 	select * from branch where short_name like CONCAT('%',#{short_name},'%' ) 
 </select>
 <insert id="insert" parameterType="Branch">
-	insert into branch (id,name,short_name)
-    values (#{id,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, #{short_name,jdbcType=VARCHAR})
+	insert into branch (id,name,short_name,time)
+    values (#{id,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, #{short_name,jdbcType=VARCHAR}, #{time,jdbcType=VARCHAR})
 </insert>
 <update id="update" parameterType="Branch">
-	update branch set name=#{name},short_name=#{short_name} where id = #{id}
+	update branch set short_name=#{short_name},time=#{time} where id = #{id}
 </update>
 
 <delete id="deleteByPrimaryKey">

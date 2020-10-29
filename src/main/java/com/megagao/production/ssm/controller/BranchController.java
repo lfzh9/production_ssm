@@ -1,5 +1,7 @@
 package com.megagao.production.ssm.controller;
 
+import java.util.List;
+
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,19 +14,34 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.megagao.production.ssm.common.CommonController;
 import com.megagao.production.ssm.domain.Branch;
+<<<<<<< Updated upstream
+=======
+import com.megagao.production.ssm.domain.COrder;
+import com.megagao.production.ssm.domain.Department;
+>>>>>>> Stashed changes
 import com.megagao.production.ssm.domain.customize.CustomResult;
 import com.megagao.production.ssm.domain.customize.EUDataGridResult;
 import com.megagao.production.ssm.service.BranchService;
 
 @Controller
 @RequestMapping("/branch")
+<<<<<<< Updated upstream
 public class BranchController extends CommonController{
+=======
+public class BranchController {
+	
+>>>>>>> Stashed changes
 	@Autowired
 	private BranchService branchService;
 	
 	@RequestMapping("/find")
 	public String find() throws Exception{
 		return "branch_list";                                                                                                                                                                                                                                                                                                 
+	}
+	@RequestMapping("/get_data")
+	@ResponseBody
+	public List<Branch> getData() throws Exception{
+		return branchService.find();
 	}
 	
 	@RequestMapping("/list")

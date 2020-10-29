@@ -4,12 +4,25 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 public class Branch {
-	@Size(min=3,max=12,message="{id.length.error}")
+
 	private String id;
 	@NotNull(message="机构名不能为空")
 	private String name;
 	private String short_name;
-	
+	private String time;
+	private Dept dept; 
+	public Dept getDept() {
+		return dept;
+	}
+	public void setDept(Dept dept) {
+		this.dept = dept;
+	}
+	public String getTime() {
+		return time;
+	}
+	public void setTime(String time) {
+		this.time = time;
+	}
 	public String getId() {
 		return id;
 	}

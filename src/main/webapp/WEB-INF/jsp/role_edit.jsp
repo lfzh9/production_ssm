@@ -148,6 +148,7 @@
 		<label><input name="permissionOption1" type="checkbox" value="52" />员工修改 </label> 
 		<label><input name="permissionOption1" type="checkbox" value="53" />员工删除 </label> 
 		<br><br>
+<<<<<<< Updated upstream
 		<span style="font-weight: bold;">消息管理：</span>
 		<label><input name="permissionOption1" type="checkbox" value="281" />消息新增 </label> 
 		<label><input name="permissionOption1" type="checkbox" value="282" />消息修改 </label> 
@@ -162,6 +163,25 @@
 		<label><input name="permissionOption1" type="checkbox" value="511" />便签新增 </label> 
 		<label><input name="permissionOption1" type="checkbox" value="512" />便签修改 </label> 
 		<label><input name="permissionOption1" type="checkbox" value="513" />便签删除 </label> 
+=======
+		
+		<span style="font-weight: bold;">机构管理：</span>
+		<label><input name="permissionOption1" type="checkbox" value="275" />机构新增 </label> 
+		<label><input name="permissionOption1" type="checkbox" value="276" />机构修改 </label> 
+		<label><input name="permissionOption1" type="checkbox" value="277" />机构删除 </label> 
+		<br><br>
+		
+		<span style="font-weight: bold;">部门管理：</span>
+		<label><input name="permissionOption1" type="checkbox" value="402" />部门新增 </label> 
+		<label><input name="permissionOption1" type="checkbox" value="403" />部门修改 </label> 
+		<label><input name="permissionOption1" type="checkbox" value="404" />部门删除 </label> 
+		<br><br>
+		
+		<span style="font-weight: bold;">员工管理：</span>
+		<label><input name="permissionOption1" type="checkbox" value="406" />员工新增 </label> 
+		<label><input name="permissionOption1" type="checkbox" value="407" />员工修改 </label> 
+		<label><input name="permissionOption1" type="checkbox" value="408" />员工删除 </label> 
+>>>>>>> Stashed changes
 		<br><br>
 		<span style="font-weight: bold;">用户管理：</span>
 		<label><input name="permissionOption1" type="checkbox" value="201"  />用户新增 </label> 

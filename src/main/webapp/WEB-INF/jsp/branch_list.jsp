@@ -12,6 +12,7 @@
 			<th data-options="field:'id',align:'center',width:100">机构编号</th>
 			<th data-options="field:'name',align:'center',width:100">机构名称</th>
 			<th data-options="field:'short_name',align:'center',width:100">机构简称</th>
+			<th data-options="field:'time',align:'center',width:100">加入时间</th>
 			</tr>
     </thead>
 </table> 
@@ -51,6 +52,7 @@
 			<div data-options="name:'id'">机构编号</div> 
 			<div data-options="name:'name'">机构名称</div>
 			<div data-options="name:'short_name'">机构简称</div> 
+			
 		</div>     
     </div>  
 </div>  
@@ -74,7 +76,8 @@ function doSearch_branch(value,name){ //用户输入用户名,点击搜素,触�
 				{field : 'ck', checkbox:true },
 				{field : 'id', width : 100, align:'center', title : '机构编号'},
 				{field : 'name', width : 100, align : 'center', title : '机构名称'},
-				{field : 'short_name', width : 100, align : 'center', title : '机构简称'}
+				{field : 'short_name', width : 100, align : 'center', title : '机构简称'},
+				{field : 'time', width : 100, align : 'center', title : '加入时间'}
 				
 	        ] ],  
 	    });
@@ -87,7 +90,8 @@ function doSearch_branch(value,name){ //用户输入用户名,点击搜素,触�
 	             	{field : 'ck', checkbox:true }, 
 	             	{field : 'id', width : 100, align:'center', title : '机构编号'},
 					{field : 'name', width : 100, align : 'center', title : '机构名称'},
-					{field : 'short_name', width : 100, align : 'center', title : '机构简称'}
+					{field : 'short_name', width : 100, align : 'center', title : '机构简称'},
+					{field : 'time', width : 100, align : 'center', title : '加入时间'}
 	        ] ],  
 	    });
 	}

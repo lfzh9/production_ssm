@@ -19,7 +19,7 @@
 	        <tr>
 	            <td>机构名称:</td>
 	            <td>
-	            	<input id="institution" class="easyui-textbox"  type="text" name="name" 
+	            	<input id="institution" class="easyui-textbox"  type="text" name="name" readonly="readonly"
     					data-options="required:true" />
 	            </td>
 	        </tr>
@@ -28,6 +28,13 @@
 	            <td>
 	            	<input id="simple" class="easyui-textbox" name="short_name"  type="text"
     					/>
+    			</td>  
+	        </tr>
+	          <tr>
+	            <td>加入时间:</td>
+	            <td>
+	            <input id="simple"  class="easyui-datetimebox" name="time"/>
+	            	
     			</td>  
 	        </tr>
 	        
