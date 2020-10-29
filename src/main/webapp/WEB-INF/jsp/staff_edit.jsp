@@ -40,7 +40,7 @@
 	            <td>性别:</td>
 	            <td>
 	            
-    					<select class="easyui-combobox" name="sex" panelHeight="auto" data-options="width:160,
+    					<select class="easyui-combobox" name="sex" panelHeight="auto"  readonly="readonly" data-options="width:160,
 		            		editable:false">
 						<option>男</option>
 						<option>女</option>

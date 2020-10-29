@@ -247,12 +247,9 @@
 						["工艺监控","工艺","工艺要求","工艺计划","工序"],
 						["物料监控","物料信息","物料收入","物料消耗"],
 						["质量监控","不合格品管理","成品计量质检","成品计数质检","工序计量质检","工序计数质检"],
-
 						["人员监控","部门管理","员工管理"],
-						["机构监控"],
 						["消息传递","消息管理","公告"],
-						["日程管理","我的日程","我的便签"]
-						["人员监控","部门管理","员工管理"]
+						["日程管理","我的日程","我的便签"],
 						["人事管理","机构管理","员工管理","部门管理"]
 
 					  ];
@@ -304,18 +301,18 @@
 									break;
 								case 6 :
 									$('#HomeFuncAccordion').accordion('select',allItem[6][0]);
-									var node = $('#branchMonitor').tree('find',71);
-									$('#branchMonitor').tree('expandTo', node.target).tree('select', node.target);
+									var node = $('#messageMonitor').tree('find',71);
+									$('#messageMonitor').tree('expandTo', node.target).tree('select', node.target);
 									break;
 								case 7 :
 									$('#HomeFuncAccordion').accordion('select',allItem[7][0]);
-									var node = $('#messageMonitor').tree('find',81);
-									$('#messageMonitor').tree('expandTo', node.target).tree('select', node.target);
+									var node = $('#myScheduleMonitor').tree('find',81);
+									$('#myScheduleMonitor').tree('expandTo', node.target).tree('select', node.target);
 									break;
 								case 8 :
 									$('#HomeFuncAccordion').accordion('select',allItem[8][0]);
-									var node = $('#messageMonitor').tree('find',91);
-									$('#myScheduleMonitor').tree('expandTo', node.target).tree('select', node.target);
+									var node = $('#branchMonitor').tree('find',91);
+									$('#branchMonitor').tree('expandTo', node.target).tree('select', node.target);
 									break;
 								default:
 									break; 

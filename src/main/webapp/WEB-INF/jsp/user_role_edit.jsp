@@ -172,7 +172,12 @@
 		<label><input name="permissionOption3" type="checkbox" value="211" />角色新增 </label> 
 		<label><input name="permissionOption3" type="checkbox" value="212" />角色修改 </label> 
 		<label><input name="permissionOption3" type="checkbox" value="213" />角色删除 </label> 
-		<br><br><br>
+		<br><br><br> <span style="font-weight: bold;">登录日志：</span> <label><input
+			name="permissionOption3" type="checkbox" value="301" />登录日志删除 </label> <br>
+		<br>
+		<br> <span style="font-weight: bold;">操作日志：</span> <label><input
+			name="permissionOption3" type="checkbox" value="311" />操作日志删除 </label> <br>
+		<br><br>
 	</form>
 	<br><br>
 	<div style="padding:5px">

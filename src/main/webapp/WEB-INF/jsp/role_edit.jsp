@@ -118,11 +118,6 @@
 		<label><input name="permissionOption1" type="checkbox" value="272" />设备种类修改 </label> 
 		<label><input name="permissionOption1" type="checkbox" value="273" />设备种类删除 </label> 
 		<br><br>
-		<span style="font-weight: bold;">机构管理：</span>
-		<label><input name="permissionOption1" type="checkbox" value="275" />机构新增 </label> 
-		<label><input name="permissionOption1" type="checkbox" value="276" />机构修改 </label> 
-		<label><input name="permissionOption1" type="checkbox" value="277" />机构删除 </label> 
-		<br><br>
 		<span style="font-weight: bold;">设备例检管理：</span>
 		<label><input name="permissionOption1" type="checkbox" value="241" />设备例检新增 </label> 
 		<label><input name="permissionOption1" type="checkbox" value="242" />设备例检修改 </label> 
@@ -148,7 +143,7 @@
 		<label><input name="permissionOption1" type="checkbox" value="52" />员工修改 </label> 
 		<label><input name="permissionOption1" type="checkbox" value="53" />员工删除 </label> 
 		<br><br>
-<<<<<<< Updated upstream
+
 		<span style="font-weight: bold;">消息管理：</span>
 		<label><input name="permissionOption1" type="checkbox" value="281" />消息新增 </label> 
 		<label><input name="permissionOption1" type="checkbox" value="282" />消息修改 </label> 
@@ -163,8 +158,8 @@
 		<label><input name="permissionOption1" type="checkbox" value="511" />便签新增 </label> 
 		<label><input name="permissionOption1" type="checkbox" value="512" />便签修改 </label> 
 		<label><input name="permissionOption1" type="checkbox" value="513" />便签删除 </label> 
-=======
-		
+
+		<br><br>
 		<span style="font-weight: bold;">机构管理：</span>
 		<label><input name="permissionOption1" type="checkbox" value="275" />机构新增 </label> 
 		<label><input name="permissionOption1" type="checkbox" value="276" />机构修改 </label> 
@@ -181,7 +176,7 @@
 		<label><input name="permissionOption1" type="checkbox" value="406" />员工新增 </label> 
 		<label><input name="permissionOption1" type="checkbox" value="407" />员工修改 </label> 
 		<label><input name="permissionOption1" type="checkbox" value="408" />员工删除 </label> 
->>>>>>> Stashed changes
+
 		<br><br>
 		<span style="font-weight: bold;">用户管理：</span>
 		<label><input name="permissionOption1" type="checkbox" value="201"  />用户新增 </label> 
@@ -192,7 +187,13 @@
 		<label><input name="permissionOption1" type="checkbox" value="211" />角色新增 </label> 
 		<label><input name="permissionOption1" type="checkbox" value="212" />角色修改 </label> 
 		<label><input name="permissionOption1" type="checkbox" value="213" />角色删除 </label> 
-		<br><br><br>
+		<br><br>
+		<br> <span style="font-weight: bold;">登录日志：</span> <label><input
+			name="permissionOption1" type="checkbox" value="301" />登录日志删除 </label> <br>
+		<br>
+		<br> <span style="font-weight: bold;">操作日志：</span> <label><input
+			name="permissionOption1" type="checkbox" value="311" />操作日志删除 </label> <br>
+		<br><br>
 	</form>
 	<br><br>
 	<div style="padding:5px">

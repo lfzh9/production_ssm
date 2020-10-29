@@ -106,7 +106,6 @@ function doSearch_operationLog(value,name){ //用户输入用户名,点击搜素
       			$.messager.alert('提示', data.msg);
       		}else{
       			var ids = getoperationLogSelectionsIds();
-      			alert(ids);
               	if(ids.length == 0){
               		$.messager.alert('提示','未选中日志!');
               		return ;

@@ -2,7 +2,6 @@ package com.megagao.production.ssm.mapper;
 
 import java.util.List;
 
-import com.megagao.production.ssm.domain.Branch;
 import com.megagao.production.ssm.domain.Staff;
 
 public interface StaffMapper {

@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.megagao.production.ssm.common.CommonController;
-import com.megagao.production.ssm.domain.Branch;
 import com.megagao.production.ssm.domain.Staff;
 import com.megagao.production.ssm.domain.customize.CustomResult;
 import com.megagao.production.ssm.domain.customize.EUDataGridResult;
