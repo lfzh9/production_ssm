@@ -7,7 +7,7 @@ import com.megagao.production.ssm.domain.Staff;
 public interface StaffMapper {
 	public List<Staff> find();
 	public List<Staff> searchStaffById(String id);
-	public List<Staff> searchStaffByName(String name);
+	public List<Staff> searchStaffByUsername(String name);
 	
 	public int insert(Staff staff)throws Exception;
 	public int update(Staff staff);

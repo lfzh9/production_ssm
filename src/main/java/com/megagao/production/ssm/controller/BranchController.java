@@ -112,7 +112,6 @@ public class BranchController extends CommonController{
 	@RequestMapping("/search_branch_by_name")
 	@ResponseBody
 	public EUDataGridResult searchBranchByName(Integer page, Integer rows, String searchValue) throws Exception{
-		searchValue = new String(searchValue.getBytes("iso8859-1"),"utf-8"); 
 		EUDataGridResult result = branchService.searchBranchByName(page, rows, searchValue);
 		log("机构：查询数据:{机构名称："+searchValue+"}");
 		return result;
@@ -121,7 +120,6 @@ public class BranchController extends CommonController{
 	@RequestMapping("/search_branch_by_short_name")
 	@ResponseBody
 	public EUDataGridResult searchBranchByShortName(Integer page, Integer rows, String searchValue) throws Exception{
-		searchValue = new String(searchValue.getBytes("iso8859-1"),"utf-8"); 
 		EUDataGridResult result = branchService.searchBranchByShortName(page, rows, searchValue);
 		log("机构：查询数据:{机构简称："+searchValue+"}");
 		return result;

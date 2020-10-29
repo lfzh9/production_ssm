@@ -112,7 +112,7 @@ public class DeptController extends CommonController{
 	@RequestMapping("/search_dept_by_name")
 	@ResponseBody
 	public EUDataGridResult searchDeptByName(Integer page, Integer rows, String searchValue) throws Exception{
-		searchValue = new String(searchValue.getBytes("iso8859-1"),"utf-8"); 
+		
 		EUDataGridResult result = deptService.searchDeptByName(page, rows, searchValue);
 		log("部门：查询数据:{部门名称："+searchValue+"}");
 		return result;

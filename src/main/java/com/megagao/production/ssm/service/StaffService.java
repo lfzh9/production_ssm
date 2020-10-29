@@ -15,7 +15,7 @@ public interface StaffService {
 	EUDataGridResult searchStaffById(Integer page, Integer rows,
 			String searchValue) throws Exception;
 
-	EUDataGridResult searchStaffByName(Integer page, Integer rows,
+	EUDataGridResult searchStaffByUsername(Integer page, Integer rows,
 			String searchValue) throws Exception;
 
 

@@ -11,8 +11,8 @@
 <select id="searchStaffById" resultType="Staff" parameterType="string">
 	select * from user where id like CONCAT('%',#{id},'%' ) 
 </select>
-<select id="searchStaffByName" resultType="Staff" parameterType="string">
-	select * from user where name like CONCAT('%',#{name},'%' ) 
+<select id="searchStaffByUsername" resultType="Staff" parameterType="string">
+	select * from user where username like CONCAT('%',#{username},'%' ) 
 </select>
 
 <insert id="insert" parameterType="Staff">

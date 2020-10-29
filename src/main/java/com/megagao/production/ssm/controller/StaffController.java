@@ -107,11 +107,11 @@ public class StaffController extends CommonController{
 		return result;
 	}
 	//根据订单id查找
-	@RequestMapping("/search_staff_by_name")
+	@RequestMapping("/search_staff_by_username")
 	@ResponseBody
-	public EUDataGridResult searchStaffByName(Integer page, Integer rows, String searchValue) throws Exception{
-		searchValue = new String(searchValue.getBytes("iso8859-1"),"utf-8"); 
-		EUDataGridResult result = staffService.searchStaffByName(page, rows, searchValue);
+	public EUDataGridResult searchStaffByUsername(Integer page, Integer rows, String searchValue) throws Exception{
+		 
+		EUDataGridResult result = staffService.searchStaffByUsername(page, rows, searchValue);
 		log("员工：查询数据:{员工名字："+searchValue+"}");
 		return result;
 	}

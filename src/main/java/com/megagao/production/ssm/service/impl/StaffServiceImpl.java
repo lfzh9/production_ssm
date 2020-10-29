@@ -55,11 +55,11 @@ public class StaffServiceImpl implements StaffService {
 	}
 
 	@Override
-	public EUDataGridResult searchStaffByName(Integer page, Integer rows,
+	public EUDataGridResult searchStaffByUsername(Integer page, Integer rows,
 			String searchValue) throws Exception {
 		// 分页处理
 		PageHelper.startPage(page, rows);
-		List<Staff> list = staffMapper.searchStaffByName(searchValue);
+		List<Staff> list = staffMapper.searchStaffByUsername(searchValue);
 		// 创建一个返回值对象
 		EUDataGridResult result = new EUDataGridResult();
 		result.setRows(list);

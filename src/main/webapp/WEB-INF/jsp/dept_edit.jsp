@@ -20,7 +20,7 @@
 	        <tr>
 	            <td>部门名称:</td>
 	            <td>
-	            	<input id="institution" class="easyui-textbox"  type="text" name="dept_name" 
+	            	<input id="institution" class="easyui-textbox"  type="text" name="dept_name"  readonly="readonly"
     					data-options="required:true" />
 	            </td>
 	        </tr>

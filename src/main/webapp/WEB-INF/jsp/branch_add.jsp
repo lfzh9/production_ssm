@@ -34,7 +34,7 @@
 	        <tr>
 	            <td>加入时间:</td>
 	            <td>
-	             <input class="easyui-datetimebox" name="time"/>
+	             <input class="easyui-datetimebox" name="time" editable="fasle" />
 	            	
     			</td>  
 	        </tr>
