@@ -77,7 +77,6 @@
 </div>
 <script type="text/javascript">
 	//提交表单
-	alert(${staffs});
 	function submitStaffAddForm(){
 		//有效性验证
 		if(!$('#staffAddForm').form('validate')){

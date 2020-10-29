@@ -3,19 +3,19 @@
 
 <mapper namespace="com.megagao.production.ssm.mapper.LoginLogMapper">
 <select id="find" resultType="LoginLog">
-	select * from loginLog
+	select * from loginLog order by date desc
 </select>
 <select id="loadLoginLogById" resultType="LoginLog" parameterType="int">
 	select * from loginLog where id = #{id}
 </select>
 <select id="searchLoginLogById" resultType="LoginLog" parameterType="int">
-	select * from loginLog where id like CONCAT('%',#{id},'%' ) 
+	select * from loginLog where id like CONCAT('%',#{id},'%' ) order by date desc
 </select>
 <select id="searchLoginLogByDate" resultType="LoginLog" parameterType="String">
-	select * from loginlog where date like CONCAT('%',#{date},'%' )
+	select * from loginlog where date like CONCAT('%',#{date},'%' ) order by date desc
 </select>
 <select id="searchLoginLogByName" resultType="LoginLog" parameterType="string">
-	select * from loginLog where name like CONCAT('%',#{name},'%' ) 
+	select * from loginLog where name like CONCAT('%',#{name},'%' ) order by date desc
 </select>
 <insert id="insert" parameterType="LoginLog">
 	insert into loginLog (date,IP,name)

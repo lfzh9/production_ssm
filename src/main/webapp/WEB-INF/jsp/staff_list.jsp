@@ -167,7 +167,6 @@ function doSearch_staff(value,name){ //用户输入用户名,点击搜素,触发
       			$.messager.alert('提示', data.msg);
       		}else{
       			var ids = getstaffSelectionsIds();
-      			alert(ids);
               	if(ids.length == 0){
               		$.messager.alert('提示','未选中机构!');
               		return ;

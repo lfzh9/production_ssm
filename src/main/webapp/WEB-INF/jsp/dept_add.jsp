@@ -67,7 +67,6 @@
 </div>
 <script type="text/javascript">
 	//提交表单
-	alert(${depts});
 	function submitDeptAddForm(){
 		//有效性验证
 		if(!$('#deptAddForm').form('validate')){

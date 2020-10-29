@@ -106,7 +106,9 @@ public class MessageController extends CommonController{
 	//根据订单id查找
 	@RequestMapping("/search_message_by_title")
 	@ResponseBody
+	
 	public EUDataGridResult searchMessageByTitle(Integer page, Integer rows, String searchValue) throws Exception{
+		searchValue = new String(searchValue.getBytes("iso8859-1"),"utf-8");
 		EUDataGridResult result = messageService.searchMessageByTitle(page, rows, searchValue);
 		log("查询消息：{标题：" + searchValue +"}");
 		return result;
@@ -115,6 +117,7 @@ public class MessageController extends CommonController{
 	@RequestMapping("/search_message_by_type")
 	@ResponseBody
 	public EUDataGridResult searchMessageByType(Integer page, Integer rows, String searchValue) throws Exception{
+		searchValue = new String(searchValue.getBytes("iso8859-1"),"utf-8");
 		EUDataGridResult result = messageService.searchMessageByType(page, rows, searchValue);
 		log("查询消息：{类型：" + searchValue +"}");
 		return result;
@@ -123,6 +126,7 @@ public class MessageController extends CommonController{
 	@RequestMapping("/search_message_by_person")
 	@ResponseBody
 	public EUDataGridResult searchMessageByPerson(Integer page, Integer rows, String searchValue) throws Exception{
+		searchValue = new String(searchValue.getBytes("iso8859-1"),"utf-8");
 		EUDataGridResult result = messageService.searchMessageByPerson(page, rows, searchValue);
 		log("查询消息：{发布人：" + searchValue +"}");
 		return result;

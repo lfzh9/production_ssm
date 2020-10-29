@@ -100,6 +100,7 @@ public class MyScheduleController extends CommonController{
 	@RequestMapping("/search_mySchedule_by_title")
 	@ResponseBody
 	public EUDataGridResult searchMyScheduleByTitle(Integer page, Integer rows, String searchValue) throws Exception{
+		searchValue = new String(searchValue.getBytes("iso8859-1"),"utf-8");
 		EUDataGridResult result = myScheduleService.searchMyScheduleByTitle(page, rows, searchValue);
 		log("查询日程：{日程标题："+searchValue+"}");
 		return result;
@@ -108,6 +109,7 @@ public class MyScheduleController extends CommonController{
 	@RequestMapping("/search_mySchedule_by_type")
 	@ResponseBody
 	public EUDataGridResult searchMyScheduleByType(Integer page, Integer rows, String searchValue) throws Exception{
+		searchValue = new String(searchValue.getBytes("iso8859-1"),"utf-8");
 		EUDataGridResult result = myScheduleService.searchMyScheduleByType(page, rows, searchValue);
 		log("查询日程：{日程类型："+searchValue+"}");
 		return result;
@@ -116,6 +118,7 @@ public class MyScheduleController extends CommonController{
 	@RequestMapping("/search_mySchedule_by_person")
 	@ResponseBody
 	public EUDataGridResult searchMyScheduleByPerson(Integer page, Integer rows, String searchValue) throws Exception{
+		searchValue = new String(searchValue.getBytes("iso8859-1"),"utf-8");
 		EUDataGridResult result = myScheduleService.searchMyScheduleByPerson(page, rows, searchValue);
 		log("查询日程：{日程发布人："+searchValue+"}");
 		return result;
@@ -125,6 +128,7 @@ public class MyScheduleController extends CommonController{
 		@RequestMapping("/search_mySchedule_by_startTime")
 		@ResponseBody
 		public EUDataGridResult searchMyScheduleByStartTime(Integer page, Integer rows, String searchValue) throws Exception{
+			searchValue = new String(searchValue.getBytes("iso8859-1"),"utf-8");
 			EUDataGridResult result = myScheduleService.searchMyScheduleByStartTime(page, rows, searchValue);
 			log("查询日程：{日程开始时间："+searchValue+"}");
 			return result;

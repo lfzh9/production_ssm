@@ -3,16 +3,16 @@
 
 <mapper namespace="com.megagao.production.ssm.mapper.OperationLogMapper">
 <select id="find" resultType="OperationLog">
-	select * from operationLog
+	select * from operationLog order by date desc
 </select>
 <select id="searchOperationLogById" resultType="OperationLog" parameterType="int">
-	select * from operationLog where id like CONCAT('%',#{id},'%' ) 
+	select * from operationLog where id like CONCAT('%',#{id},'%' ) order by date desc
 </select>
 <select id="searchOperationLogByDate" resultType="OperationLog" parameterType="String">
-	select * from operationlog where date like CONCAT('%',#{date},'%' )
+	select * from operationlog where date like CONCAT('%',#{date},'%' ) order by date desc
 </select>
 <select id="searchOperationLogByName" resultType="OperationLog" parameterType="string">
-	select * from operationLog where name like CONCAT('%',#{name},'%' ) 
+	select * from operationLog where name like CONCAT('%',#{name},'%' ) order by date desc
 </select>
 <insert id="insert" parameterType="OperationLog">
 	insert into operationLog (date,`desc`,name)

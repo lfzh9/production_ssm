@@ -44,7 +44,7 @@
 	            <td>创建时间:</td>
 	            <td>
 	            		<input class="easyui-datetimebox" name="time" data-options="required:true,showSeconds:true"
-						   value="date.format('yyyy-MM-dd hh:mm:ss')" style="width:150px">
+						   value="date.format('yyyy-MM-dd hh:mm:ss')" style="width:150px" editable="fasle">
     			</td>  
 	        </tr>
 	       

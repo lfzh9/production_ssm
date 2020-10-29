@@ -100,6 +100,7 @@ public class MynoteController extends CommonController{
 	@RequestMapping("/search_mynote_by_title")
 	@ResponseBody
 	public EUDataGridResult searchMynoteByTitle(Integer page, Integer rows, String searchValue) throws Exception{
+		searchValue = new String(searchValue.getBytes("iso8859-1"),"utf-8");
 		EUDataGridResult result = mynoteService.searchMynoteByTitle(page, rows, searchValue);
 	
 		log("查询便签：{标题" + searchValue +"}");
@@ -110,6 +111,7 @@ public class MynoteController extends CommonController{
 	@RequestMapping("/search_mynote_by_person")
 	@ResponseBody
 	public EUDataGridResult searchMynoteByPerson(Integer page, Integer rows, String searchValue) throws Exception{
+		searchValue = new String(searchValue.getBytes("iso8859-1"),"utf-8");
 		EUDataGridResult result = mynoteService.searchMynoteByPerson(page, rows, searchValue);
 		log("查询便签：{发布人" + searchValue +"}");
 		return result;
@@ -119,6 +121,7 @@ public class MynoteController extends CommonController{
 		@RequestMapping("/search_mynote_by_time")
 		@ResponseBody
 		public EUDataGridResult searchMynoteByStartTime(Integer page, Integer rows, String searchValue) throws Exception{
+			searchValue = new String(searchValue.getBytes("iso8859-1"),"utf-8");
 			EUDataGridResult result = mynoteService.searchMynoteByTime(page, rows, searchValue);
 			log("查询便签：{" + searchValue +"}");
 			return result;
