@@ -158,7 +158,7 @@
 				</li>
 			</ul>
 		</div>
-<<<<<<< Updated upstream
+
 		<div title="消息传递" data-options="selected:true" style="padding:10px">
 			<ul id="messageMonitor" class="easyui-tree"
 				data-options="animate:true,linSes:true">
@@ -186,10 +186,9 @@
 			</ul>
 		</div>
 		
-		<div title="机构监控" data-options="selected:true" style="padding:10px">
-=======
+
 		<div title="人事管理" data-options="selected:true" style="padding:10px">
->>>>>>> Stashed changes
+
 			<ul id="branchMonitor" class="easyui-tree"
 				data-options="animate:true,lines:true">
 				<li><span>人事管理</span>
@@ -210,7 +209,7 @@
 		
 		
 		<c:if test="${activeUser.rolename == '超级管理员' }">
-			<div title="系统管理" style="padding:10px;">
+		<div title="系统管理" style="padding:10px;">
 	
 				<ul id="sysManager" class="easyui-tree"
 					data-options="animate:true,lines:true">
@@ -248,16 +247,14 @@
 						["工艺监控","工艺","工艺要求","工艺计划","工序"],
 						["物料监控","物料信息","物料收入","物料消耗"],
 						["质量监控","不合格品管理","成品计量质检","成品计数质检","工序计量质检","工序计数质检"],
-<<<<<<< Updated upstream
+
 						["人员监控","部门管理","员工管理"],
 						["机构监控"],
 						["消息传递","消息管理","公告"],
 						["日程管理","我的日程","我的便签"]
-						
-=======
 						["人员监控","部门管理","员工管理"]
 						["人事管理","机构管理","员工管理","部门管理"]
->>>>>>> Stashed changes
+
 					  ];
 					  
 		function isContains(str, substr) {
